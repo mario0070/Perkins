@@ -95,14 +95,18 @@ export default function Index() {
       <div>
         <h2 className="fw-bold text-center mt-5">Fall in love with <span className="text-danger">amazing</span> aromas</h2>
         <div className="d-flex flex-wrap p-4">
+
           <div className="section2 p-0">
             <div className="img-bg">
-              <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+              <img src="https://garcy-store-demo.myshopify.com/cdn/shop/articles/blog4_1024x1024_6e921ee2-7c22-4585-b5d6-05544deb68ae.jpg?crop=center&height=1024&v=1672717028&width=1024" alt="" />
             </div>
             <div className="text-lay text-white">
-              <p className="text-start mt-5">Providing you with the current market listings from other farmers</p>
-              <p className="text-start">Recommendation system and image analyzing</p>
-              <p className="text-start">We provide our users with ability to implement their own listings in the market</p>
+              <h3 className="text-start mt-5 mb-3">Black Opium Eau De</h3>
+              <p className="text-start">Availability: In Stock</p>
+              <p className="text-start">Brand: Sunglass</p>
+              <p className="text-start">Capacity: 200ml, 250ml</p>
+              <h2 className="text-start text-warning fw-bold">₦40,000</h2>
+              <a href="" className="mt-3 fw-semibold btn-warning btn">View Product</a>
             </div>
           </div>
           
@@ -111,33 +115,27 @@ export default function Index() {
               <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
             </div>
             <div className="text-lay">
-              <p className="fw-bold mt-1">Favourable weather conditions for plant growth</p>
-              <ul className='mt-2'>
-                <li className="mb-2">Sunlight Content</li>
-                <li className="mb-2">Rain Quantity</li>
-                <li className="mb-2">Humid Condition</li>
-                <li className='mb-2'>Irrigation</li>
-                <li className='mb-2'>Wind</li>
-                <li className='mb-2'>Rainmaking</li>
-              </ul>
+              <h3 className="text-start mt-5 mb-3">Chanel N°5 Eau De</h3>
+              <p className="text-start">Availability: In Stock</p>
+              <p className="text-start">Brand: Bag</p>
+              <p className="text-start">Capacity: 150ml, 200ml</p>
+              <h2 className="text-start text-warning fw-bold">₦23,000</h2>
+              <a href="" className="mt-3 fw-semibold btn-warning btn">View Product</a>
             </div>
           </div>
           
           <div className="section2 p-0">
             <div className="img-bg">
-              <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+              <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba21.jpg?v=1672908689" alt="" />
             </div>
             <div className="text-lay">
               <div className="mx-auto">
-                <p className="fw-bold">Market Insights</p>
-                <ul className="mt-2">
-                  <li className="mb-2">Pricing</li>
-                  <li className="mb-2">Availability</li>
-                  <li className="mb-2">Volume</li>
-                  <li className="mb-2">weather impacts</li>
-                  <li className="mb-2">Supply</li>
-                  <li className="mb-2">Demand</li>
-                </ul>
+                  <h3 className="text-start mt-5 mb-3">Angel Natural Refillable</h3>
+                  <p className="text-start">Availability: In Stock</p>
+                  <p className="text-start">Brand: Sunglass</p>
+                  <p className="text-start">Capacity: 200ml, 250ml</p>
+                  <h2 className="text-start text-warning fw-bold">₦80,000</h2>
+                  <a href="" className="mt-3 fw-semibold btn-warning btn">View Product</a>
               </div>
             </div>
           </div>
@@ -145,7 +143,7 @@ export default function Index() {
 
         <h2 className="fw-bold text-center mt-5">Hot <span className="text-danger">Deals</span></h2>
         <p className="text-center">Don't Miss Today's Featured Deals</p>
-        <div className="d-flex flex-wrap p-4">
+        <div className="d-flex hot flex-wrap p-4">
           <div className="section2 p-0">
             <div className="img-bg">
               <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
