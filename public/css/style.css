@@ -230,6 +230,15 @@ input[type="checkbox"]:checked::before {
         padding: .8em;
         width: 100%;
     }
+
+    .notFound{
+        padding: 1em;
+    }
+
+    .notFound .img{
+        width: 90% !important;
+        margin-top: 3em !important;
+    }
     
 }
 

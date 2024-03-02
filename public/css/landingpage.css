@@ -58,7 +58,7 @@
 }
 
 .homepage .header a:hover{
-    color: green;
+    color: rgb(209, 209, 209);
     transition: .2s;
 }
 

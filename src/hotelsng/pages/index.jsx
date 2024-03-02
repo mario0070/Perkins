@@ -42,6 +42,9 @@ export default function Index() {
                               <Link className="nav-link" to="/dashboard"><i className="fa-solid fa-bars"></i> Dashboard</Link>
                           </li>
                           <li className="nav-item">
+                              <Link className="nav-link" to="/shop-perfumes"><i className="fa-solid fa-bars"></i> Shop Perfumes</Link>
+                          </li>
+                          <li className="nav-item">
                               <Link className="nav-link" to="/login"><i className="fa-solid fa-bars"></i> Login</Link>
                           </li>
                           <li className="nav-item">
@@ -65,6 +68,7 @@ export default function Index() {
         <ul className='d-flex'>
           <li className="list-unstyled"><a href="/">Home</a></li>
           <li className="list-unstyled"><a href="/dashboard">Dashboard</a></li>
+          <li className="list-unstyled"><a href="/shop-perfumes">Shop</a></li>
           <li className="list-unstyled"><a href="/signup" className='btn fw-bold'>Sign Up</a></li>
           
         </ul>
@@ -79,7 +83,7 @@ export default function Index() {
      <div className="head-up">
         <h2 className="text-white fw-bold">Fall in love with amazing scent</h2>
         <p className="text-white">Embrace the essence of elegance. Unveil the allure of luxury. <br /> With every spray, let our fragrances transport you to a world of sophistication and style, <br /> just hit the button below</p>
-        <li className="list-unstyled mt-4"><a href="/signup" className='btn fw-bold'>Shop Now</a></li>
+        <li className="list-unstyled mt-4"><a href="/shop-perfumes" className='btn fw-bold'>Shop Now</a></li>
      </div>
    </div>
 
