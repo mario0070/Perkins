@@ -124,12 +124,7 @@ export default function Single() {
                     <p className="mb-1 disc">₦23002</p>
                     <p className="stock">in stock</p>
                     <p className="shipping">+ shipping from ₦550 to your location</p>
-                    {!user && <button onClick={guestOrder} className='btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button>}
-                    {user && 
-                      <>
-                        {isFill && <button onClick={payWithPaystack} className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button>}
-                      </>
-                    }
+                    <button onClick={payWithPaystack} className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button>
                     
                     <div className='btn qty mt-4 d-flex'>
                       <i className="btn fa-solid fa-minus" onClick={decrease}></i> 
