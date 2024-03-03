@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from "/img/logo.png"
+import SideBar from './sideBar';
 
 export default function NavBar() {
     const alertModal = () => {
@@ -31,6 +32,8 @@ export default function NavBar() {
                     <i className="fa-solid fa-bars"></i>
                     Menu
                     </div>
+
+                    <SideBar/>
                     
                     <div className="offcanvas offcanvas-start show-sidebar">
                         <div className="img text-center mt-3">
@@ -81,6 +84,13 @@ export default function NavBar() {
                     <li className="list-unstyled"><a href="/signup" className='btn fw-bold'>Sign Up</a></li>
                     
                     </ul>
+                </div>
+
+                
+                <div className="section1">
+                    <div className="img-container">
+                    <img alt="" src='https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675' className='' />
+                    </div>
                 </div>
 
                 <div className="head-up">

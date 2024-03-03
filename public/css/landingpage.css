@@ -185,13 +185,14 @@
 }
 
 .offcanvas{
-    background-color: var(--primary);
-    color: var(--secondary) !important;
+    background-color: var(--secondary);
+    color: var(--primary) !important;
     width: 90% !important;
 }
 
 .offcanvas a{
-    color: var(--secondary) !important;
+    color: rgb(90, 90, 90) !important;
+    font-weight: 600;
 }
 
 .open_canvas{
@@ -217,7 +218,7 @@
     padding: .7em 1em .7em 1em !important;
     transition: .2s;
     margin-bottom: .5em !important;
-    font-size: 14px !important;
+    font-size: 18px !important;
 }
 
 .homepage nav a:hover{

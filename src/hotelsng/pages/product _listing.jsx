@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../utils/axios";
+import Footer from "../../components/footer";
+import NavBar from "../../components/navBar";
 
 export default function ProductListing() {
   const [product, setproduct] = useState([]);
@@ -7,8 +9,11 @@ export default function ProductListing() {
   useEffect(() => {}, []);
 
   return (
-    <div className="landing product_listing">
+    <div className="single homepage">
+      <NavBar/>
 
+
+      <Footer/>
     </div>
   );
 }

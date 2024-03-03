@@ -1,60 +1,52 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import logo from "/img/logo.png"
 
 export default function SideBar() {
 
-    useEffect(() => {
-        var side_link = document.querySelectorAll(".side_link .link")
-        var links = document.querySelectorAll(".side_link")
-        side_link.forEach((val, index) => {
-          var page = window.location.pathname.split("/")[1].split("-").join().replace(",", " ")
-          if(val.innerText.toLowerCase() == ` ${page}`){
-            links[index].classList.add("active")
-          }
-          else if(page == "product"){
-            links[1].classList.add("active")
-          }
-          else if(page == "create product"){
-            links[1].classList.add("active")
-          }
-          else if(page == "supplier profile"){
-            links[0].classList.add("active")
-          }
-        })
-    })
-
     return (
-        <div className="sidebar box">
-            <div className="info d-flex">
-                <div className="image">
-                    <p className="circle mb-0"><i className="fa-solid fa-user"></i> </p>
-                </div>
-                <div className="text" style={{"margin-left": ".8em"}}>
-                    <p className="mb-1 fw-semibold name">Ganiu Jamiu</p>
-                    <p className="mb-1 email custom_font">email@gmail.com</p>
-                    <p className="mb-1 num custom_font">09138650286</p>
-                </div>
-            </div>
-
-            <Link to='/supplier-profile' className="d-flex text-decoration-none text-dark side_tabs justify-content-between side_link">
-                <p className="mb-0 link"><i className="fa-solid fa-user"></i>Supplier Profile</p>
-            </Link>
-
-            <Link  to="/products" className="d-flex text-decoration-none text-dark side_tabs justify-content-between side_link">
-                <p className="mb-0 link"><i className="fa-brands fa-product-hunt"></i> Products</p>
-                <p className="count text-truncate mb-0">0</p>
-            </Link>
-
-            <Link to='/sales' className="d-flex text-decoration-none text-dark side_tabs justify-content-between side_link" >
-                <p className="mb-0 link"><i className="fa-solid fa-chart-area"></i> Sales</p>
-                <p className="count text-truncate mb-0">0</p>
-            </Link>
-
-            <Link to='/commission' className="d-flex text-decoration-none text-dark side_tabs justify-content-between side_link">
-                <p className="mb-0 link"><i className="fa-solid fa-hand-holding-dollar"></i> Commission</p>
-                <p className="count text-truncate mb-0">0</p>
-            </Link>
-            
+        <div className="offcanvas offcanvas-start show-sidebar">
+        <div className="img text-center mt-3">
+          <a href="/">
+            <h1 className='text-danger fw-bold pb-3 pt-3 mt-3'>
+                Sproutt
+            </h1>
+          </a>
         </div>
+        <nav className="navbar mt-3 navbar-expand-sm navbar-light">
+            <div className="w-100">
+                <ul className="navbar-nav">
+                    <li className="nav-item mb-4">
+                        <a className="nav-link" href="/"><i className="fa-solid fa-bars"></i> Home</a>
+                    </li>
+                    <li className="nav-item mb-4">
+                        <a className="nav-link" href="/dashboard"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+                    </li>
+                    <li className="nav-item mb-4">
+                        <a className="nav-link" href="/shop-perfumes"><i class="fa-brands fa-product-hunt"></i> Shop Perfumes</a>
+                    </li>
+                    <li className="nav-item mb-4">
+                        <a className="nav-link" href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+                    </li>
+                    <li className="nav-item mb-4">
+                        <a className="nav-link" href="/signup"><i class="fa-solid fa-right-from-bracket"></i> Sign up</a>
+                    </li>
+                    <li className="nav-item mb-4">
+                        <a className="nav-link" href="#"><i class="fa-solid fa-gears"></i> Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <nav className="navbar bottom-link mt-4 navbar-expand-sm navbar-light">
+            <div className="w-100">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <Link className="nav-link" ><i className="fa-solid fa-power-off"></i> Log Out</Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     )
 }
