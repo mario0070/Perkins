@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import logo from "/img/logo.png"
 
 export default function NavBar() {
     const alertModal = () => {
@@ -12,47 +13,86 @@ export default function NavBar() {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, Log Out!"
           }).then((result) => {
-            // if (result.isConfirmed) {
-            //   Swal.fire({
-            //     title: "Deleted!",
-            //     text: "Your file has been deleted.",
-            //     icon: "success"
-            //   });
-            // }
         });
     }
 
     return (
-        <div className="topbar d-flex justify-content-between">
-            <div className="">
-                <h4 className="carsng_color fw-bold">Seller Dashboard</h4>
+        <div className="">
+            <div className="content">
+                <div className="header d-flex mt-2">
+                    <div className="logo">
+                    <a href="/">
+                        <img src={logo} alt="" className='logoImg' />
+                        <h2 className='fw-bold logoname text-center text-white'>Sproutt</h2>
+                    </a>
+                    </div>
+
+                    <div className="open_canvas"  data-bs-toggle="offcanvas" data-bs-target=".show-sidebar">
+                    <i className="fa-solid fa-bars"></i>
+                    Menu
+                    </div>
+                    
+                    <div className="offcanvas offcanvas-start show-sidebar">
+                        <div className="img text-center mt-3">
+                            <a href="/">
+                            <h5 className='text-white'>
+                                <img src={logo} alt="" />
+                                Sproutt
+                            </h5>
+                            </a>
+                        </div>
+                        <nav className="navbar mt-3 navbar-expand-sm navbar-light">
+                            <div className="w-100">
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/"><i className="fa-solid fa-bars"></i> Home</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/dashboard"><i className="fa-solid fa-bars"></i> Dashboard</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/shop-perfumes"><i className="fa-solid fa-bars"></i> Shop Perfumes</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/login"><i className="fa-solid fa-bars"></i> Login</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/signup"><i className="fa-solid fa-bars"></i> Sign up</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+
+                        <nav className="navbar bottom-link mt-4 navbar-expand-sm navbar-light">
+                            <div className="w-100">
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" ><i className="fa-solid fa-power-off"></i> Log Out</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <ul className='d-flex'>
+                    <li className="list-unstyled"><a href="/">Home</a></li>
+                    <li className="list-unstyled"><a href="/dashboard">Dashboard</a></li>
+                    <li className="list-unstyled"><a href="/shop-perfumes">Shop</a></li>
+                    <li className="list-unstyled"><a href="/signup" className='btn fw-bold'>Sign Up</a></li>
+                    
+                    </ul>
+                </div>
+
+                <div className="head-up">
+                    <h2 className="text-white fw-bold">Fall in love with amazing scent</h2>
+                    <p className="text-white">Embrace the essence of elegance. Unveil the allure of luxury. <br /> With every spray, let our fragrances transport you to a world of sophistication and style, <br /> just hit the button below</p>
+                    <li className="list-unstyled mt-4"><a href="/shop-perfumes" className='btn fw-bold'>Shop Now</a></li>
+                </div>
             </div>
 
-            <div className="d-flex links">
-                <Link to='/create-product' className="btn sell mb-0">Sell</Link>
-                <div className="dropdown text-center">
-                    <p className="btn icon mb-0" data-bs-toggle="dropdown"><i className="fa-solid fa-message"></i></p>
-                    <p className="custom_font mb-0">Messages</p>
-                    <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">You don't have any Messages.</a></li>
-                    </ul>
-                </div>
-                <div className="dropdown text-center">
-                    <p className="btn icon mb-0" data-bs-toggle="dropdown"><i className="fa-solid fa-bell"></i></p>
-                    <p className="custom_font mb-0">Notifications</p>
-                    <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">You don't have any Notications.</a></li>
-                    </ul>
-                </div>
-                <div className="dropdown text-center dropdown-menu-end">
-                    <p className="btn icon mb-0" data-bs-toggle="dropdown"><i className="fa-solid fa-user"></i></p>
-                    <p className="custom_font mb-0">User</p>
-                    <ul className="dropdown-menu">
-                        <li><h5 className="dropdown-header">Username</h5></li>
-                    <li><Link to="/supplier-profile" className="dropdown-item" href="#">Profile</Link></li>
-                    <li onClick={alertModal}><a className="dropdown-item" href="#">Log Out</a></li>
-                    </ul>
-                </div>
+        
+            <div className="img-bg">
+                <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/s8.jpg?v=1672910105" alt="" className=''/>
             </div>
         </div>
     )

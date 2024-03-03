@@ -42,6 +42,15 @@
     /* overflow: scroll; */
 }
 
+.single img{
+    height: 220px;
+}
+
+.single .content{
+    height: 220px;
+    overflow: hidden;
+}
+
 .homepage .content::-webkit-scrollbar{
     display: none;
 }
@@ -395,4 +404,170 @@
         margin-top: 0 !important;
     }
 
+    .single .main{
+        padding: 0em 1em !important;
+        flex-wrap: wrap !important;
+    }
+
+    .single .main .left .images, .single .main .left .text{
+        width: 100% !important;
+    }
+
+    .single .main .left{
+        flex-wrap: wrap !important;
+    }
+
+    .single .main .left, .single .main .right{
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+
+}
+
+
+
+.single .img, .single .section1{
+    height: 100px !important;
+}
+
+.single .main {
+    margin-top: 4em;
+    padding: 2em 8em;
+}
+
+.single .main .right{
+    width: 30%;
+    padding: 1em;
+    font-size: 14px;
+    color: rgb(87, 87, 87);
+}
+
+.single .main .right input{
+    border: 1px solid rgb(204, 204, 204);
+    width: 100%;
+    margin-bottom: 1em;
+    padding: .6em;
+    border-radius: 4px;
+    outline: none;
+}
+
+.single .main .right .text{
+    margin-left: .8em;
+}
+
+.single .main .right .arrive{
+    font-size: 12px;
+}
+
+.single .main .right i{
+    border: 1px solid rgb(168, 168, 168);
+    height: fit-content;
+    padding: .5em;
+    border-radius: 3px;
+    transform: translateY(2px);
+}
+
+.single .main .left{
+    width: 70%;
+    margin-right: 2em;
+    padding: 1em;
+}
+
+.single .main .box{
+    box-shadow: .1em .1em 1em rgba(0, 0, 0, 0.107);
+    height: fit-content;
+    border-radius: 6px;
+    margin-bottom: 2em;
+}
+
+.single .main .left .images{
+    width: 40%;
+    background-color: rgb(218, 218, 218);
+    height: fit-content;
+    overflow: hidden;
+    margin-right: 1em;
+}
+
+.single .main .left .images img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.single .main .left .text{
+    margin-top: 1em;
+    width: 60%;
+}
+
+.single .main .left h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--primary);
+}
+
+.single .main .left .disc{
+    text-decoration: line-through;
+    /* font-size: 14px; */
+    color: rgb(135, 135, 135);
+}
+
+.single .main .left .stock{
+    font-size: 12px;
+    background-color: rgba(180, 59, 59, 0.176);
+    padding: .1em 1em;
+    width: fit-content;
+    border-radius: 3px;
+    margin-top: 1em;
+}
+
+.single .main .left .shipping{
+    color: rgb(135, 135, 135);
+    font-size: 12px;
+}
+
+.single .main .left button{
+    background-color: var(--primary);
+    color: white;
+    width: 100%;
+    padding: .6em;
+}
+
+.single .main .left .desc{
+    font-size: 14px;
+    color: grey;
+}
+
+.single .qty{
+    justify-content: space-evenly;
+    border: 1px solid var(--primary);
+    padding: .8em;
+}
+
+.single .qty i {
+    background: var(--primary);
+    color: white;
+    padding: .4em .5em;
+    border-radius: .3em;
+}
+
+.single .qty span{
+    border: 1px solid var(--primary);
+    padding: .1em 2em;
+    color: var(--primary);
+    border-radius: 3px;
+}
+
+.single .addy.error, .single .phone.error{
+    border: 1px solid red !important;
+}
+
+.single .addy.error::placeholder, .single .phone.error::placeholder{
+    color: red;
+}
+
+.single .state.error{
+    border: 1px solid red !important;
+}
+
+.single .state.error::placeholder{
+    color: red;
 }

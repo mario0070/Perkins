@@ -3,6 +3,7 @@ import { Link, redirect } from 'react-router-dom'
 import "/public/css/landingpage.css"
 import logo from "/img/logo.png"
 import logox1 from "/img/greenlogo.png"
+import Footer from '../../components/footer'
 
 export default function Index() {
 
@@ -106,7 +107,7 @@ export default function Index() {
               <p className="text-start">Brand: Sunglass</p>
               <p className="text-start">Capacity: 200ml, 250ml</p>
               <h2 className="text-start text-warning fw-bold">₦40,000</h2>
-              <a href="" className="mt-3 fw-semibold btn-warning btn">View Product</a>
+              <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
             </div>
           </div>
           
@@ -120,7 +121,7 @@ export default function Index() {
               <p className="text-start">Brand: Bag</p>
               <p className="text-start">Capacity: 150ml, 200ml</p>
               <h2 className="text-start text-warning fw-bold">₦23,000</h2>
-              <a href="" className="mt-3 fw-semibold btn-warning btn">View Product</a>
+              <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
             </div>
           </div>
           
@@ -135,7 +136,7 @@ export default function Index() {
                   <p className="text-start">Brand: Sunglass</p>
                   <p className="text-start">Capacity: 200ml, 250ml</p>
                   <h2 className="text-start text-warning fw-bold">₦80,000</h2>
-                  <a href="" className="mt-3 fw-semibold btn-warning btn">View Product</a>
+                  <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
               </div>
             </div>
           </div>
@@ -173,40 +174,7 @@ export default function Index() {
       </div>
 
       
-      <div className="footer mt-4">
-        <div className="footer_content">
-          <div className="text-center input">
-              <div className="logo">
-                <a href="/" className=''>
-                  <img src={logo} alt="" className='' />
-                  <h2 className='fw-bold text-center text-white'>Sproutt</h2>
-                </a>
-              </div>
-              <h4 className="fw-bold text-white mb-3 mt-5">Contact Us</h4>
-              <input type="text" placeholder='Email'/><br />
-              <button className="btn btn-light fw-bold">Subscribe</button>
-          </div>
-          <div className="policy d-flex">
-              <div className="">
-                <p className="fw-bold">Available on</p>
-                <p className="">Whatsapp</p>
-                <p className="">Youtube</p>
-              </div>
-              <div className="">
-                <p className="fw-bold">Help</p>
-                <p className="">Support</p>
-                <p className="">Partners</p>
-                <p className="">FAQs</p>
-              </div>
-              <div className="">
-                <p className="fw-bold">Policy</p>
-                <p className="">Terms of service</p>
-                <p className="">About Us</p>
-              </div>
-          </div>
-        </div>
-        <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba1.jpg?v=1672796390" alt="" className='bag'/>
-      </div>
+      <Footer/>
       
 
    </div>
