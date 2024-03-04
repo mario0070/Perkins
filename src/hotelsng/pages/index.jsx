@@ -15,7 +15,7 @@ export default function Index() {
 
     <div className="body mt-4">
         <div>
-          <h2 className="fw-bold text-center mt-5">Fall in love with <span className="text-danger">amazing</span> aromas</h2>
+          <h2 className="fw-bold text-center mt-5">Best Selling <span className="text-danger">Products</span></h2>
           <div className="d-flex flex-wrap p-4">
 
             <div className="section2 p-0">
