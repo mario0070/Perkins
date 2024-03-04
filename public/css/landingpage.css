@@ -140,6 +140,48 @@
     margin-top: 400px !important;
 }
 
+.single .body{
+    margin-top: 0px !important;
+}
+
+.single input{
+    padding: .6em;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 6px;
+    outline: none;
+    width: 50%;
+    display: block;
+    margin: auto auto;
+    margin-bottom: 1em;
+}
+
+.single button{
+    padding: .7em;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    background-color: var(--primary);
+    color: var(--secondary);
+    width: 15em;
+    margin-bottom: 2em;
+}
+
+.single .section2{
+    width: 280px !important;
+    overflow: hidden !important;
+}
+
+.single .section2 .img-bg{
+    height: 300px !important;
+}
+
+.single .section2 .text-lay{
+    padding: 1em !important;
+    background-color: rgba(0, 0, 0, 0.19) !important;
+    backdrop-filter: blur(10px);
+}
+
+
 .body .section2{
     padding: 2em;
     width: 400px;
@@ -165,7 +207,7 @@
 .body  .section2 .text-lay{
     position: absolute;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.56);
+    background-color: rgba(0, 0, 0, 0.396);
     width: 100%;
     height: 100%;
     padding: 2em;
@@ -369,6 +411,14 @@
     .homepage .head-up, .homepage .header {
         padding: 1em !important;
         padding-top: 2em !important;
+    }
+
+    .single input{
+        width: 90%;
+    }
+    
+    .single button{
+        width: 15em;
     }
     
 }

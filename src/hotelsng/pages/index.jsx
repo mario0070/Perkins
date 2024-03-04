@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <div className='homepage'>
     <NavBar/>
-    
+
     <div className="body mt-4">
         <div>
           <h2 className="fw-bold text-center mt-5">Fall in love with <span className="text-danger">amazing</span> aromas</h2>
@@ -23,11 +23,19 @@ export default function Index() {
                 <img src="https://garcy-store-demo.myshopify.com/cdn/shop/articles/blog4_1024x1024_6e921ee2-7c22-4585-b5d6-05544deb68ae.jpg?crop=center&height=1024&v=1672717028&width=1024" alt="" />
               </div>
               <div className="text-lay text-white">
-                <h3 className="text-start mt-5 mb-3">Black Opium Eau De</h3>
+                <h3 className="text-start mt-4 mb-3">Black Opium Eau De</h3>
                 <p className="text-start">Availability: In Stock</p>
                 <p className="text-start">Brand: Sunglass</p>
                 <p className="text-start">Capacity: 200ml, 250ml</p>
-                <h2 className="text-start text-warning fw-bold">₦40,000</h2>
+                <h2 className="text-start fw-bold">₦40,000</h2>
+                
+                <div className="d-flex mb-3">
+                  <i class="fa-solid fa-star text-warning"></i>
+                  <i class="fa-solid fa-star text-warning"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
                 <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
               </div>
             </div>
@@ -37,11 +45,19 @@ export default function Index() {
                 <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
               </div>
               <div className="text-lay">
-                <h3 className="text-start mt-5 mb-3">Chanel N°5 Eau De</h3>
+                <h3 className="text-start mt-4 mb-3">Chanel N°5 Eau De</h3>
                 <p className="text-start">Availability: In Stock</p>
                 <p className="text-start">Brand: Bag</p>
                 <p className="text-start">Capacity: 150ml, 200ml</p>
-                <h2 className="text-start text-warning fw-bold">₦23,000</h2>
+                <h2 className="text-start fw-bold">₦23,000</h2>
+                
+                <div className="d-flex mb-3">
+                  <i class="fa-solid fa-star text-warning"></i>
+                  <i class="fa-solid fa-star text-warning"></i>
+                  <i class="fa-solid fa-star text-warning"></i>
+                  <i class="fa-solid fa-star text-warning"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
                 <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
               </div>
             </div>
@@ -52,11 +68,19 @@ export default function Index() {
               </div>
               <div className="text-lay">
                 <div className="mx-auto">
-                    <h3 className="text-start mt-5 mb-3">Angel Natural Refillable</h3>
+                    <h3 className="text-start mt-4 mb-3">Angel Natural Refillable</h3>
                     <p className="text-start">Availability: In Stock</p>
                     <p className="text-start">Brand: Sunglass</p>
                     <p className="text-start">Capacity: 200ml, 250ml</p>
-                    <h2 className="text-start text-warning fw-bold">₦80,000</h2>
+                    <h2 className="text-start fw-bold">₦80,000</h2>
+                    
+                    <div className="d-flex mb-3">
+                      <i class="fa-solid fa-star text-warning"></i>
+                      <i class="fa-solid fa-star text-warning"></i>
+                      <i class="fa-solid fa-star text-warning"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                    </div>
                     <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
                 </div>
               </div>
