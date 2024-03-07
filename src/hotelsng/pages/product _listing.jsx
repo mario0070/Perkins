@@ -5,19 +5,40 @@ import NavBar from "../../components/navBar";
 
 export default function ProductListing() {
   const [product, setproduct] = useState([]);
+  const [category, setcategory] = useState([]);
+  const [initialcategory, setinitialcategory] = useState("Select Category");
 
-  useEffect(() => {}, []);
+  const selectCat = (cat) => {
+    setinitialcategory(cat)
+  }
+
+  useEffect(() => {
+    setcategory(["Floral", "Fruity", "Oriental", "Woody", "Citrus", "Gourmand"])
+  }, []);
 
   return (
-    <div className="single homepage">
+    <div className="single listing homepage">
       <NavBar/>
 
       <div className="body">
         <div>
           <div className="text-center mt-5">
-            {/* <h2 className="fw-bold text-center mt-5">Fall in love with <span className="text-danger">amazing</span> aromas</h2> */}
+            <div class="dropdown">
+              <button type="button" class="btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                {initialcategory}
+              </button>
+              <ul class="dropdown-menu">
+                {
+                  category.map(val => {
+                    return (
+                      <li onClick={() => selectCat(val)}><a class="dropdown-item" href="#">{val}</a></li>
+                    )
+                  })
+                }
+              </ul>
+            </div>
             <input type="text"  placeholder="search product by categories, year, price, brand etc"/>
-            <button className="">Search</button>
+            <button className="search">Search</button>
           </div>
 
           <div className="d-flex flex-wrap p-4">
