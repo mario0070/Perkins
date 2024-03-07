@@ -19,6 +19,13 @@ export default function Dashboard() {
     const price = useRef("");
     const [file, setFile] = useState();
     const [img, setImg] = useState("");
+    const [category, setcategory] = useState([]);
+    const [initialcategory, setinitialcategory] = useState("Select Category");
+  
+    const selectCat = (cat) => {
+      setinitialcategory(cat)
+    }
+  
 
     const toggle = () => {
         const topbar = document.querySelector(".topbar");
@@ -120,19 +127,21 @@ export default function Dashboard() {
     };
 
 
-    // useEffect(() => {
-    //     axios
-    //     .post("/", {
-    //         id: user._id,
-    //     })
-    //     .then((res) => {
-    //         // setloaded(true);
-    //         // setproduct(res.data.data);
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
-    // }, [product]);
+    useEffect(() => {
+      setcategory(["Floral", "Fruity", "Oriental", "Woody", "Citrus", "Gourmand"])
+
+        // axios
+        // .post("/", {
+        //     id: user._id,
+        // })
+        // .then((res) => {
+        //     // setloaded(true);
+        //     // setproduct(res.data.data);
+        // })
+        // .catch((error) => {
+        //     console.log(error);
+        // });
+    }, [product]);
 
 
     return (
@@ -159,10 +168,25 @@ export default function Dashboard() {
                   <p className="text-muted btn" onClick={showForm}>
                     <i class="fa-solid fa-plus"></i>
                   </p>
-                  <p className="p">Add Product</p>
+                  <p className="p mb-5">Add Product</p>
                 </div>
                 <div className="box form">
                   <form action="" onSubmit={createProduct}>
+                      <div class="dropdown">
+                        <button type="button" class="btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                          {initialcategory}
+                        </button>
+                        <ul class="dropdown-menu">
+                          {
+                            category.map(val => {
+                              return (
+                                <li onClick={() => selectCat(val)}><a class="dropdown-item" href="#">{val}</a></li>
+                              )
+                            })
+                          }
+                        </ul>
+                      </div>
+
                     <input
                       ref={name}
                       required
@@ -170,18 +194,23 @@ export default function Dashboard() {
                       className="mt-3"
                       placeholder="Product Name"
                     />
+                     <input
+                      required
+                      type="text"
+                      className="mt-3"
+                      placeholder="capacity"
+                    />
+
                     <input
                       ref={price}
                       required
                       type="text"
                       placeholder="Price"
+                      className="mb-4 mt-3"
                     />
-                    <input
-                      ref={description}
-                      required
-                      type="text"
-                      placeholder="Description"
-                    />
+
+                    <textarea required name="" id="" cols="30" rows="5"  placeholder="Description"></textarea>
+
                     <label htmlFor="file">
                       Choose product image <i class="fa-solid fa-camera"></i>
                     </label>
