@@ -120,23 +120,23 @@ export default function Dashboard() {
     };
 
 
-    useEffect(() => {
-        axios
-        .post("/", {
-            id: user._id,
-        })
-        .then((res) => {
-            // setloaded(true);
-            // setproduct(res.data.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    }, [product]);
+    // useEffect(() => {
+    //     axios
+    //     .post("/", {
+    //         id: user._id,
+    //     })
+    //     .then((res) => {
+    //         // setloaded(true);
+    //         // setproduct(res.data.data);
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //     });
+    // }, [product]);
 
 
     return (
-      <div className="vendor_dashboard landing">
+      <div className="vendor_dashboard">
         <SideBar role={role} />
 
         <div className="main_content">
