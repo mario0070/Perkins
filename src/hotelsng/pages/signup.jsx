@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios from '../../utils/axios';
 import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie';
 
 export default function Signup() {
     document.title = 'Sign up | Get Started';
@@ -10,6 +11,7 @@ export default function Signup() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const phone_nm = useRef()
+    const [cookie, setCookie] = useCookies("")
     const [initialFlag, setinitialFlag] = useState("https://flagcdn.com/w320/ng.png")
 
     const togglePassword = () => {
@@ -69,17 +71,25 @@ export default function Signup() {
         var submitBtn = document.querySelector(".submitBtn")
         submitBtn.innerHTML = `Processing <div class="spinner-border spinner-border-sm text-white"> </div>`
 
-        axios.post("/signup", {
-            firstName,
-            lastName,
+        axios.post("/user/signup", {
+            firstname: firstName,
+            lastname: lastName,
             phone,
             email,
             password
         })
         .then(response => {
             console.log(response)
+            if(response.data.message == "user already exist"){
+                msgAlert("error", response.data.message)
+                submitBtn.innerHTML = "Get Started"
+                return
+            }
+
             msgAlert("success", "Account created successfully")
             submitBtn.innerHTML = "Get Started"
+            setCookie("user", response.data.data)
+            window.location.href = "/dashboard"
         })
 
         .catch(error => {
