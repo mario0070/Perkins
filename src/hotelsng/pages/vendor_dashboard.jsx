@@ -190,7 +190,6 @@ export default function VendorDashboard() {
                   </div>
 
                   <div className="right">
-                    { user.role == "vendor" &&
                       <div className="d-flex">
                         <div className="box">
                             <p className="">Active Orders</p>
@@ -213,7 +212,6 @@ export default function VendorDashboard() {
                           <h4 className="revenue">₦{!loaded ? <div class="text-center text-dark spinner-border spinner-border-sm"></div> : spending.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}</h4>
                         </div>
                       </div>
-                    }
                     
                     { user.role == "user" &&
                       <div className="d-flex">
@@ -250,86 +248,10 @@ export default function VendorDashboard() {
               </div>
           </div>
 
-          { user.role == "vendors" &&
-          <div className="section2 d-flex">
-            <div className="box top_product">
-                <i class="fa-brands fa-product-hunt"></i>
-                <h6 className='fw-bold mb-2'>Top Selling product</h6>
-                <h6 className="text-center mt-4 text-muted">Shoes</h6>
-                <h4 className="text-center fw-bold mny">₦0</h4>
-                <p className="text-center mb-4">From previous period</p>
+  
+         
 
-                <div className="d-flex">
-                  <div className="">
-                    <h6 className="text-muted mb-1">Shoes</h6>
-                    <p className="mb-0">Foot wear</p>
-                  </div>
-                  <div className="">
-                    <p className="mb-0 text-muted">Sales</p>
-                    <p className="mb-0 text-dark mny">98%</p>
-                  </div>
-                </div>
-
-                <div className="d-flex">
-                  <div className="">
-                    <h6 className="text-muted mb-1">Shoes</h6>
-                    <p className="mb-0">Foot wear</p>
-                  </div>
-                  <div className="">
-                    <p className="mb-0 text-muted">Sales</p>
-                    <p className="mb-0 text-dark mny">98%</p>
-                  </div>
-                </div>
-
-                <div className="d-flex">
-                  <div className="">
-                    <h6 className="text-muted mb-1">Shoes</h6>
-                    <p className="mb-0">Foot wear</p>
-                  </div>
-                  <div className="">
-                    <p className="mb-0 text-muted">Sales</p>
-                    <p className="mb-0 text-dark mny">98%</p>
-                  </div>
-                </div>
-            </div>
-            
-            <div className="box table_set">
-              <i class="fa-brands fa-first-order-alt"></i>
-              <h6 className="fw-bold mb-2">Latest Transaction</h6>
-              <table class="table mt-4">
-                <thead>
-                  <tr>
-                    <th>#ID</th>
-                    <th>Total</th>
-                    <th>Payment Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>#ks540</td>
-                    <td>₦400</td>
-                    <td className='status mny'>Paid</td>
-                  </tr>
-                  <tr>
-                    <td>#ks540</td>
-                    <td>₦400</td>
-                    <td className='status mny'>Paid</td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </div>
-            
-            <div className="box notification">
-              <i class="fa-solid fa-bell"></i>
-              <h6 className="fw-bold mb-2">Notifications</h6>
-              <h4 className="">No Notifications!!</h4>
-              <p className="">You do not have any notifications.</p>
-            </div>
-          </div>
-          }
-
-          <div className="section3">
+          <div className="section3 mt-5">
             <p className="text-center text-white">© Copyright 2016, All rights reserved</p>
           </div>
 
