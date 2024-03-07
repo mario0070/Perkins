@@ -67,12 +67,12 @@ export default function Profile() {
                                 <input type="text" placeholder='Enter your email address' value={user.email} />
                             </div>
                             <div className="">
-                                <label htmlFor=""><i class="fa-solid fa-business-time"></i> Business Name</label>
-                                <input type="text" placeholder='Enter your business name' value={user.business_name} />
+                                <label htmlFor=""><i class="fa-solid fa-business-time"></i> Phone Number</label>
+                                <input type="text" placeholder='Enter your phone number' value={user.phone} />
                             </div>
                             <div className="">
                                 <label htmlFor=""><i class="fa-solid fa-business-time"></i> Address</label>
-                                <input type="text" placeholder='Enter your business name' value={user.address} />
+                                <input type="text" placeholder='Enter address' value={user.address} />
                             </div>
                             <div className="">
                                 <label htmlFor=""><i class="fa-solid fa-lock"></i> Change password</label>

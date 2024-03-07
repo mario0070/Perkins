@@ -163,7 +163,7 @@ export default function VendorDashboard() {
                           <img src={banner3} alt="" />
                           <p className="float-right"><i class="fa-solid fa-check"></i></p>
                           <p className="mb-2 text-capitalize"><i class="fa-regular fa-user"></i> {user.lastname} {user.firstname}</p>
-                          <p className="d-block mb-0 text-capitalize"><i class="fa-brands fa-critical-role"></i> {user.role}</p>
+                          <p className="d-block mb-0 text-capitalize"><i class="fa-brands fa-critical-role"></i> {user.email}</p>
                           <p className="mb-0 mt-2"><i class="fa-solid fa-venus-double"></i> ...</p>
                           <button><a href="/profile" className='text-white text-decoration-none'>View Profile</a></button>
                         </div>

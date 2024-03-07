@@ -79,7 +79,6 @@ export default function Signup() {
             password
         })
         .then(response => {
-            console.log(response)
             if(response.data.message == "user already exist"){
                 msgAlert("error", response.data.message)
                 submitBtn.innerHTML = "Get Started"

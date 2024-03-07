@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom'
 import dotenv from "dotenv";
 import path from 'path'
 import axios from '../../utils/axios';
+import { useCookies } from 'react-cookie';
 
 export default function Login() {
     document.title = 'Login into your account';
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [cookie, setCookie] = useCookies("")
 
     const togglePassword = () => {
         var passwordInput = document.getElementById("passwordInput");
@@ -56,20 +58,21 @@ export default function Login() {
         var submitBtn = document.querySelector(".submitBtn")
         submitBtn.innerHTML = `Processing <div class="spinner-border spinner-border-sm text-white"> </div>`
 
-        axios.post("/signup", {
+        axios.post("/user/login", {
             email,
             password
         })
         .then(response => {
-            console.log(response)
-            msgAlert("success", "Account created successfully")
-            submitBtn.innerHTML = "Get Started"
+            msgAlert("success", "User login successfully")
+            submitBtn.innerHTML = "Log in"
+            setCookie("user", response.data.user)
+            window.location.href = "/dashboard"
         })
 
         .catch(error => {
             console.log(error)
             msgAlert("error", error.response.data.message)
-            submitBtn.innerHTML = "Get Started"
+            submitBtn.innerHTML = "Log in"
         })
     }
 
