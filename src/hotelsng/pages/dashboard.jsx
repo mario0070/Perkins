@@ -1,73 +1,242 @@
-import React from 'react'
-import NavBar from '../../components/navBar';
-import SideBar from '../../components/sideBar';
-import Config from '../../utils/config';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import Topbar from "../../components/topbar";
+import SideBar from "../../components/side_bar";
+import "/public/css/product.css"
+import "/public/css/vendor_dashboard.css"
+import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import axios from "../../utils/axios";
 
 export default function Dashboard() {
-    const {SITENAME} = Config
-    document.title = `Products | ${SITENAME}`;
+    const [role, setRole] = useState("Vendor");
+    const [show, setShow] = useState(false);
+    const [loaded, setloaded] = useState(true);
+    const [product, setproduct] = useState([]);
+    const [cookie, setCookie, removeCookie] = useCookies("");
+    const [user, setUser] = useState(cookie.user ?? "");
+    const name = useRef("");
+    const description = useRef("");
+    const price = useRef("");
+    const [file, setFile] = useState();
+    const [img, setImg] = useState("");
 
-    const DeleteModal = () => {
+    const toggle = () => {
+        const topbar = document.querySelector(".topbar");
+        const sidebar = document.querySelector(".sidebar");
+        const main_content = document.querySelector(".main_content");
+        topbar.classList.toggle("active");
+        main_content.classList.toggle("active");
+        sidebar.classList.toggle("active");
+    };
+
+    const alert = (icon, msg) => {
+        const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        },
+        });
+        Toast.fire({
+        icon: icon,
+        title: msg,
+        });
+    };
+
+    const deleteProduct = (id) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: "This product will be remove permanently",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Delete it!"
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#2a3042",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+        if (result.isConfirmed) {
+            aXios
+            .post("/product/delete", {
+                id: id,
+            })
+            .then((res) => {})
+            .catch((err) => {
+                console.log(err, id);
+            });
+            Swal.fire({
+            title: "Deleted!",
+            text: "Your product has been deleted.",
+            icon: "success",
+            });
+        }
+        });
+    };
+
+    const showForm = () => {
+        var form = document.querySelector(".form");
+        var add = document.querySelector(".add");
+        form.style.display = "inline";
+        add.style.display = "none";
+    };
+
+    const closeForm = () => {
+        var form = document.querySelector(".form");
+        var add = document.querySelector(".add");
+        form.style.display = "none";
+        add.style.display = "inline";
+    };
+
+    const createProduct = (e) => {
+        e.preventDefault();
+        var submitbtn = document.querySelector(".submitbtn");
+        submitbtn.innerHTML = `Processing <div class="spinner-border spinner-border-sm"></div>`;
+
+        const formData = new FormData();
+        formData.append("file", img[0]);
+        formData.append("name", name.current.value);
+        formData.append("description", description.current.value);
+        formData.append("price", price.current.value);
+        formData.append("owner", user._id);
+        console.log(formData);
+
+        axios
+        .post("/product/create", formData)
+        .then((res) => {
+            alert("success", "product is added successfully");
+            name.current.value = "";
+            price.current.value = "";
+            description.current.value = "";
+            submitbtn.innerHTML = "Add Product";
+            setImg("");
         })
-    }
+        .catch((error) => {
+            alert("error", "something went wrong");
+            console.log(error, img[0]);
+            submitbtn.innerHTML = "Add Product";
+        });
+    };
+
+
+    useEffect(() => {
+        axios
+        .post("/", {
+            id: user._id,
+        })
+        .then((res) => {
+            // setloaded(true);
+            // setproduct(res.data.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }, [product]);
+
 
     return (
-        <div className="dashbooard">
-            <NavBar/>
+      <div className="vendor_dashboard landing">
+        <SideBar role={role} />
 
-            <div className="content d-flex justify-content-between">
-                <SideBar/>
+        <div className="main_content">
+          <Topbar/>
 
-                <div className="main box">
-                <div id="Product" class="tab-pane active"><br/>
-                    <h6 class="text-start d-flex justify-content-between fw-bold" style={{"padding": ".2em 2em"}}>Products
-                        <div class="dropdown">
-                            <button  data-bs-toggle="dropdown" class="dropdown-toggle" style={{"marging": "1em 2em"}}>All</button>
-                            <ul class="dropdown-menu flag_list long">
-                                <li><a href="#all" class="dropdown-item">All</a></li>
-                                <li><a href="#active" class="dropdown-item">Active</a></li>
-                                <li><a href="#draft" class="dropdown-item">Draft</a></li>
-                            </ul>
-                        </div>
-                    </h6>
+          <div className="products special d-flex">
+            <div className="pagination">
+              <p className="mb-0 btn">
+                <i className="fa-solid fa-angles-left"></i>
+              </p>
+              <p className="mb-0 btn total">1 out of 1 page</p>
+              <p className="mb-0 btn">
+                <i className="fa-solid fa-angles-right"></i>
+              </p>
+            </div>
 
-                    <div class="products">
-                        <div class="d-flex flex-wrap" style={{"padding": "0em 2em"}}>
-                            <div to='/product/id' class="product d-flex text-decoration-none text-dark">
-                                <div class="img">
-                                    <img src="https://media.hotels.ng/img/h1441346/562/422/b1/golden-tulip-lekki-1441346-6.jpg" alt="" />
-                                </div>
-                                <div class="text">
-                                    <p class="fw-bold mb-1">The Corinthia Villa Hotel</p>
-                                    <p class="">₦55,000</p>
-                                    <p class="status">Active</p>
-                                </div>
-                                <div className="dropdown actionBTN">
-                                    <p className="custom_font btn" data-bs-toggle="dropdown"><i class="fa-solid fa-circle-info"></i></p>
-                                    <ul className="dropdown-menu dropdown-menu-end">
-                                        <li><Link className="dropdown-item mb-1 custom_font" to="/product/id"><i class="fa-solid fa-pen"></i> Edit</Link></li>
-                                        <li onClick={DeleteModal}><Link className="dropdown-item custom_font text-danger fw-semibold mb-2" to="#"><i class="fa-solid fa-trash"></i> Delete</Link></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text-center">
-                            <Link to="/create-product" className="btnbg text-decoration-none px-4 py-2">Create new product</Link>
-                        </div>
-                    </div>
+            {loaded ? (
+              <>
+                <div className="box add text-center">
+                  <p className="text-muted btn" onClick={showForm}>
+                    <i class="fa-solid fa-plus"></i>
+                  </p>
+                  <p className="p">Add Product</p>
+                </div>
+                <div className="box form">
+                  <form action="" onSubmit={createProduct}>
+                    <input
+                      ref={name}
+                      required
+                      type="text"
+                      className="mt-3"
+                      placeholder="Product Name"
+                    />
+                    <input
+                      ref={price}
+                      required
+                      type="text"
+                      placeholder="Price"
+                    />
+                    <input
+                      ref={description}
+                      required
+                      type="text"
+                      placeholder="Description"
+                    />
+                    <label htmlFor="file">
+                      Choose product image <i class="fa-solid fa-camera"></i>
+                    </label>
+                    <input
+                      type="file"
+                      onChange={(e) => {
+                        setImg(e.target.files);
+                      }}
+                      ref={file}
+                      className="d-none"
+                      name="file"
+                      id="file"
+                    />
+                    <button className="btn submitbtn">Add Product</button>
+                    <p className="text-muted arrow btn" onClick={closeForm}>
+                      <i class="fa-solid fa-arrow-left"></i>
+                    </p>
+                  </form>
                 </div>
 
-            </div>
-            </div>
+                {product.map((val) => {
+                  return (
+                    <div className="box">
+                      <img src={val.image ? `${val.image}` : packages} alt="" />
+                      <div className="text p-3">
+                        <p className="fw-bold mb-0 text-capitalize">
+                          {val.name}
+                        </p>
+                        <p className="text-muted desc info text-capitalize">
+                          {val.description}.
+                        </p>
+                        <p
+                          className="text-danger btn"
+                          onClick={() => deleteProduct(val._id)}
+                        >
+                          <i class="fa-solid fa-trash"></i>
+                        </p>
+                        <h4 className="fw-bold mny">
+                          ₦
+                          {val.price
+                            .toString()
+                            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
+                        </h4>
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <>
+                <div class="text-center text-success spinner-border mt-5"></div>
+              </>
+            )}
+          </div>
         </div>
-    )
+      </div>
+    );
 }
