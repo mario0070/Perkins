@@ -173,6 +173,44 @@ export default function Single() {
         </div>
         } */}
 
+        <div className="recommended">
+          <h4 className='fw-bold text-center mb-4'>Recommended <span className="text-danger">Perfumes</span></h4>
+
+          <div className="d-flex">
+            <a href='#' className="box text-decoration-none">
+              <div className="img">
+                <img src="https://images.timbu.com/hotels-ng/supplier_indigo_bar_restaurant_and_hotel_359895_1.jpg" alt="" />
+              </div>
+             <div className="text">
+                <p className="name mb-0">name</p>
+                <p className="cat">category</p>
+                <h4 className="price text-warning fw-bold">5000</h4>
+             </div>
+            </a>
+          </div>
+
+          <div className="d-flex mt-5">
+            <a href='#' className="box text-decoration-none">
+              <div className="img">
+                <img src="https://images.timbu.com/hotels-ng/supplier_indigo_bar_restaurant_and_hotel_359895_1.jpg" alt="" />
+              </div>
+            <div className="text">
+                <p className="name mb-0">name</p>
+                <p className="cat">category</p>
+                <h4 className="price text-warning fw-bold">5000</h4>
+            </div>
+            </a>
+          </div>
+
+        </div>
+
+        <div className="recommended">
+          <h4 className='fw-bold text-center mb-4'>People also <span className="text-danger">View</span></h4>
+
+          <div className="d-flex">
+          </div>
+        </div>
+
         <Footer/>
     </div>
   )

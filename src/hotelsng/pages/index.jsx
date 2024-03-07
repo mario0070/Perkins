@@ -89,32 +89,34 @@ export default function Index() {
 
           <h2 className="fw-bold text-center mt-5">Hot <span className="text-danger">Deals</span></h2>
           <p className="text-center">Don't Miss Today's Featured Deals</p>
-          <div className="d-flex hot flex-wrap p-4">
-            <div className="section2 p-0">
-              <div className="img-bg">
-                <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-              </div>
-              <div className="text-lay text-white">
-              </div>
-            </div>
-            
-            <div className="section2 p-0">
-              <div className="img-bg">
-                <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-              </div>
-              <div className="text-lay">
-              </div>
-            </div>
-            
-            <div className="section2 p-0">
-              <div className="img-bg">
-                <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-              </div>
-              <div className="text-lay">
-                <div className="mx-auto">
+
+          <div className="recommended">
+            <div className="d-flex">
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
                 </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
               </div>
+              </a>
             </div>
+
+            <div className="d-flex mt-5">
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+            </div>
+
           </div>
         </div>
 
