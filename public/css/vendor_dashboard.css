@@ -605,15 +605,6 @@
         margin-right: 0 !important;
     }
 
-    .footer{
-        margin-top: 5em !important;
-        padding: 1em !important;
-    }
-
-    .footer .d-flex{
-        display: block !important;
-    }
-
     .landing .section2 .d-flex{
         width: 100% !important;
     }

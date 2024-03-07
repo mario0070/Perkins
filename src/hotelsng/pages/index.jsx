@@ -102,9 +102,109 @@ export default function Index() {
                   <h4 className="price text-warning fw-bold">5000</h4>
               </div>
               </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
             </div>
 
             <div className="d-flex mt-5">
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
+              <a href='#' className="box text-dark text-decoration-none">
+                <div className="img">
+                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
+                </div>
+              <div className="text">
+                  <p className="name mb-0">name</p>
+                  <p className="cat">category</p>
+                  <h4 className="price text-warning fw-bold">5000</h4>
+              </div>
+              </a>
               <a href='#' className="box text-dark text-decoration-none">
                 <div className="img">
                   <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
