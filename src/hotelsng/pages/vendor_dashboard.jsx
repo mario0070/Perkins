@@ -168,25 +168,6 @@ export default function VendorDashboard() {
                           <button><a href="/profile" className='text-white text-decoration-none'>View Profile</a></button>
                         </div>
                       </div>
-                      { user.role == "vendor" &&
-                        <div className="content content2 p-3">
-                          <h6 className='mb-4 fw-bold text-dark'>Monthly Earning</h6>
-                          <p className="text-muted">This month</p>
-                          <h4 className="mb-4">₦{spending.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}</h4>
-                          <p className="text-muted">From previous period</p>
-                          <button>View more</button>
-                        </div>
-                      }
-
-                      { user.role == "user" &&
-                        <div className="content content2 p-3">
-                          <h6 className='mb-4 fw-bold text-dark'>Monthly Spending</h6>
-                          <p className="text-muted">This month</p>
-                          <h4 className="mb-4">₦{spending.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}</h4>
-                          <p className="text-muted">From previous period</p>
-                          <button>View more</button>
-                        </div>
-                      }
                   </div>
 
                   <div className="right">

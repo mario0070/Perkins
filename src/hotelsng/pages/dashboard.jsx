@@ -10,7 +10,7 @@ import axios from "../../utils/axios";
 export default function Dashboard() {
     const [role, setRole] = useState("Vendor");
     const [show, setShow] = useState(false);
-    const [loaded, setloaded] = useState(true);
+    const [loaded, setloaded] = useState(false);
     const [product, setproduct] = useState([]);
     const [cookie, setCookie, removeCookie] = useCookies("");
     const [user, setUser] = useState(cookie.user ?? "");
@@ -65,7 +65,7 @@ export default function Dashboard() {
         confirmButtonText: "Yes, delete it!",
         }).then((result) => {
         if (result.isConfirmed) {
-            aXios
+            axios
             .post("/product/delete", {
                 id: id,
             })
@@ -130,17 +130,18 @@ export default function Dashboard() {
     useEffect(() => {
       setcategory(["Floral", "Fruity", "Oriental", "Woody", "Citrus", "Gourmand"])
 
-        // axios
-        // .post("/", {
-        //     id: user._id,
-        // })
-        // .then((res) => {
-        //     // setloaded(true);
-        //     // setproduct(res.data.data);
-        // })
-        // .catch((error) => {
-        //     console.log(error);
-        // });
+        axios
+        .post("/product/vendor-product", {
+            id: user._id,
+        })
+        .then((res) => {
+          console.log(res)
+            setloaded(true);
+            setproduct(res.data.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }, [product]);
 
     
@@ -235,7 +236,7 @@ export default function Dashboard() {
                   {product.map((val) => {
                     return (
                       <div className="box">
-                        <img src={val.image ? `${val.image}` : packages} alt="" />
+                        <img src={val.image ? `${val.image}` : "packages"} alt="" />
                         <div className="text p-3">
                           <p className="fw-bold mb-0 text-capitalize">
                             {val.name}
@@ -262,7 +263,7 @@ export default function Dashboard() {
                 </>
               ) : (
                 <>
-                  <div class="text-center text-success spinner-border mt-5"></div>
+                  <div class="text-center text-danger spinner-border mt-5"></div>
                 </>
               )}
             </div>
