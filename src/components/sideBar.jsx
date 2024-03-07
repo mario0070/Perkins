@@ -9,7 +9,7 @@ export default function SideBar() {
         <div className="img text-center mt-3">
           <a href="/">
             <h1 className='text-danger fw-bold pb-3 pt-3 mt-3'>
-                Sproutt
+            Scentasy
             </h1>
           </a>
         </div>

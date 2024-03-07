@@ -9,7 +9,7 @@ export default function Footer() {
             <div className="logo">
                 <a href="/" className=''>
                 <img src={logo} alt="" className='' />
-                <h2 className='fw-bold text-center text-white'>Sproutt</h2>
+                <h2 className='fw-bold text-center text-white'>Scentasy</h2>
                 </a>
             </div>
             <h4 className="fw-bold text-white mb-3 mt-5">Contact Us</h4>

@@ -24,7 +24,7 @@ export default function NavBar() {
                     <div className="logo">
                     <a href="/">
                         <img src={logo} alt="" className='logoImg' />
-                        <h2 className='fw-bold logoname text-center text-white'>Sproutt</h2>
+                        <h2 className='fw-bold logoname text-center text-white'>Scentasy</h2>
                     </a>
                     </div>
 
@@ -40,7 +40,7 @@ export default function NavBar() {
                             <a href="/">
                             <h5 className='text-white'>
                                 <img src={logo} alt="" />
-                                Sproutt
+                                Scentasy
                             </h5>
                             </a>
                         </div>

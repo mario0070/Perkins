@@ -143,129 +143,134 @@ export default function Dashboard() {
         // });
     }, [product]);
 
+    
+    if(cookie.user){
+      return (
+        <div className="vendor_dashboard">
+          <SideBar role={role} />
 
-    return (
-      <div className="vendor_dashboard">
-        <SideBar role={role} />
+          <div className="main_content">
+            <Topbar/>
 
-        <div className="main_content">
-          <Topbar/>
+            <div className="products special d-flex">
+              <div className="pagination">
+                <p className="mb-0 btn">
+                  <i className="fa-solid fa-angles-left"></i>
+                </p>
+                <p className="mb-0 btn total">1 out of 1 page</p>
+                <p className="mb-0 btn">
+                  <i className="fa-solid fa-angles-right"></i>
+                </p>
+              </div>
 
-          <div className="products special d-flex">
-            <div className="pagination">
-              <p className="mb-0 btn">
-                <i className="fa-solid fa-angles-left"></i>
-              </p>
-              <p className="mb-0 btn total">1 out of 1 page</p>
-              <p className="mb-0 btn">
-                <i className="fa-solid fa-angles-right"></i>
-              </p>
-            </div>
-
-            {loaded ? (
-              <>
-                <div className="box add text-center">
-                  <p className="text-muted btn" onClick={showForm}>
-                    <i class="fa-solid fa-plus"></i>
-                  </p>
-                  <p className="p mb-5">Add Product</p>
-                </div>
-                <div className="box form">
-                  <form action="" onSubmit={createProduct}>
-                      <div class="dropdown">
-                        <button type="button" class="btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                          {initialcategory}
-                        </button>
-                        <ul class="dropdown-menu">
-                          {
-                            category.map(val => {
-                              return (
-                                <li onClick={() => selectCat(val)}><a class="dropdown-item" href="#">{val}</a></li>
-                              )
-                            })
-                          }
-                        </ul>
-                      </div>
-
-                    <input
-                      ref={name}
-                      required
-                      type="text"
-                      className="mt-3"
-                      placeholder="Product Name"
-                    />
-                     <input
-                      required
-                      type="text"
-                      className="mt-3"
-                      placeholder="capacity"
-                    />
-
-                    <input
-                      ref={price}
-                      required
-                      type="text"
-                      placeholder="Price"
-                      className="mb-4 mt-3"
-                    />
-
-                    <textarea required name="" id="" cols="30" rows="5"  placeholder="Description"></textarea>
-
-                    <label htmlFor="file">
-                      Choose product image <i class="fa-solid fa-camera"></i>
-                    </label>
-                    <input
-                      type="file"
-                      onChange={(e) => {
-                        setImg(e.target.files);
-                      }}
-                      ref={file}
-                      className="d-none"
-                      name="file"
-                      id="file"
-                    />
-                    <button className="btn submitbtn">Add Product</button>
-                    <p className="text-muted arrow btn" onClick={closeForm}>
-                      <i class="fa-solid fa-arrow-left"></i>
+              {loaded ? (
+                <>
+                  <div className="box add text-center">
+                    <p className="text-muted btn" onClick={showForm}>
+                      <i class="fa-solid fa-plus"></i>
                     </p>
-                  </form>
-                </div>
+                    <p className="p mb-5">Add Product</p>
+                  </div>
+                  <div className="box form">
+                    <form action="" onSubmit={createProduct}>
+                        <div class="dropdown">
+                          <button type="button" class="btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                            {initialcategory}
+                          </button>
+                          <ul class="dropdown-menu">
+                            {
+                              category.map(val => {
+                                return (
+                                  <li onClick={() => selectCat(val)}><a class="dropdown-item" href="#">{val}</a></li>
+                                )
+                              })
+                            }
+                          </ul>
+                        </div>
 
-                {product.map((val) => {
-                  return (
-                    <div className="box">
-                      <img src={val.image ? `${val.image}` : packages} alt="" />
-                      <div className="text p-3">
-                        <p className="fw-bold mb-0 text-capitalize">
-                          {val.name}
-                        </p>
-                        <p className="text-muted desc info text-capitalize">
-                          {val.description}.
-                        </p>
-                        <p
-                          className="text-danger btn"
-                          onClick={() => deleteProduct(val._id)}
-                        >
-                          <i class="fa-solid fa-trash"></i>
-                        </p>
-                        <h4 className="fw-bold mny">
-                          ₦
-                          {val.price
-                            .toString()
-                            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
-                        </h4>
+                      <input
+                        ref={name}
+                        required
+                        type="text"
+                        className="mt-3"
+                        placeholder="Product Name"
+                      />
+                      <input
+                        required
+                        type="text"
+                        className="mt-3"
+                        placeholder="capacity"
+                      />
+
+                      <input
+                        ref={price}
+                        required
+                        type="text"
+                        placeholder="Price"
+                        className="mb-4 mt-3"
+                      />
+
+                      <textarea required name="" id="" cols="30" rows="5"  placeholder="Description"></textarea>
+
+                      <label htmlFor="file">
+                        Choose product image <i class="fa-solid fa-camera"></i>
+                      </label>
+                      <input
+                        type="file"
+                        onChange={(e) => {
+                          setImg(e.target.files);
+                        }}
+                        ref={file}
+                        className="d-none"
+                        name="file"
+                        id="file"
+                      />
+                      <button className="btn submitbtn">Add Product</button>
+                      <p className="text-muted arrow btn" onClick={closeForm}>
+                        <i class="fa-solid fa-arrow-left"></i>
+                      </p>
+                    </form>
+                  </div>
+
+                  {product.map((val) => {
+                    return (
+                      <div className="box">
+                        <img src={val.image ? `${val.image}` : packages} alt="" />
+                        <div className="text p-3">
+                          <p className="fw-bold mb-0 text-capitalize">
+                            {val.name}
+                          </p>
+                          <p className="text-muted desc info text-capitalize">
+                            {val.description}.
+                          </p>
+                          <p
+                            className="text-danger btn"
+                            onClick={() => deleteProduct(val._id)}
+                          >
+                            <i class="fa-solid fa-trash"></i>
+                          </p>
+                          <h4 className="fw-bold mny">
+                            ₦
+                            {val.price
+                              .toString()
+                              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
+                          </h4>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </>
-            ) : (
-              <>
-                <div class="text-center text-success spinner-border mt-5"></div>
-              </>
-            )}
+                    );
+                  })}
+                </>
+              ) : (
+                <>
+                  <div class="text-center text-success spinner-border mt-5"></div>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else{
+        window.location.href = "/login"
+    }
 }
