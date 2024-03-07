@@ -6,7 +6,10 @@ import NotFound from './404'
 import Index from './hotelsng/pages/index'
 import Listing from './hotelsng/pages/product _listing'
 import Single from './hotelsng/pages/single'
-import Dashboard from './hotelsng/pages/dashboard'
+import Products from './hotelsng/pages/dashboard'
+import Dashboard from './hotelsng/pages/vendor_dashboard'
+import Profile from './hotelsng/pages/profile'
+import Analytic from './hotelsng/pages/analytic'
 import AuthProvider from './utils/Context'
 
 function App() {
@@ -18,6 +21,10 @@ function App() {
             <Route element={<Signup/>} path='/signup'/>
             <Route element={<Login/>} path='/login'/>
             <Route element={<Login/>} path='/login'/>
+            <Route element={<Profile/>} path='/profile'/>
+            <Route element={<Products/>} path='/products'/>
+            <Route element={<Analytic/>} path='/analytic'/>
+            <Route element={<Listing/>} path='/shop-perfumes'/>
             <Route element={<Dashboard/>} path='/dashboard'/>
             <Route element={<Single/>} path='/product/:id'/>
             <Route element={<NotFound/>} path="*"/>
