@@ -52,6 +52,18 @@ export default function ProductListing() {
     })
   }
 
+  const selectCategory = (name) => {
+      axios.post("/product/category", {
+        category : name
+      })
+      .then(res => {
+        setproduct(res.data.data)
+      })
+      .catch(error => {
+          console.log(error)
+      })
+  }
+
   return (
     <div className="single listing homepage">
       <NavBar/>
@@ -67,7 +79,7 @@ export default function ProductListing() {
                 {
                   category.map(val => {
                     return (
-                      <li onClick={() => selectCat(val)}><a class="dropdown-item" href="#">{val}</a></li>
+                      <li onClick={() => {selectCat(val); selectCategory(val)}}><a class="dropdown-item" href="#">{val}</a></li>
                     )
                   })
                 }

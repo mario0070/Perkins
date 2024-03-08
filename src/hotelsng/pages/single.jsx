@@ -57,8 +57,6 @@ export default function Single() {
         console.log(error)
     })
 
-    console.log(product.category)
-
     axios.post("/product/category", {
       category : product.category
     })
