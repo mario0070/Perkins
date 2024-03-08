@@ -5,6 +5,7 @@ import "/public/css/product.css"
 import banner3 from "/img/home-banner3.jpg"
 import { useCookies } from 'react-cookie'
 import axios from '../../utils/axios'
+import numeral from 'numeral';
 // import moment from 'moment'
 
 export default function allOrders() {
@@ -101,23 +102,22 @@ if(cookie.user){
                     </div>
 
                     <div className="products d-flex">
-                        {!loaded && <div class="text-center text-dark spinner-border mt-5"></div> }
+                        {!loaded && <div class="text-center text-danger spinner-border mt-5"></div> }
                         {product.map(val => {
                             return(
                                 val.product &&
                                 <div className="box">
-                                    <img src={val.product.image ? `${val.product.image}` : packages} alt="" />
+                                    <img src={val.product.image ? `${val.product.image}` : ""} alt="" />
                                     <div className="text p-3">
-                                        <p className="fw-bold mb-0 text-capitalize">{val.product.name}</p>
+                                        <h4 className="fw-bold mb-0 text-capitalize">{val.product.name}</h4>
+                                        <p className="fw-bold mb-0 text-capitalize">{val.product.category}</p>
                                         <p className="text-muted desc info text-capitalize">{val.product.description}.</p>
                                         {val.status == "active" && <p className="text-danger btn" onClick={() => cancelOrder(val._id)}><i class="fa-solid fa-trash"></i></p>}
                                         {val.status == "cancel" && <p className="text-danger btn" onClick={() => alert("Order is already cancelled")}><i class="fa-solid fa-ban"></i></p>}
-                                        <h4 className='fw-bold mny'>₦{val.product.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}</h4>
-                                        <p className="listBy text-capitalize">Listed By {val.owner.business_name ?? "Business Name N/A"}</p>
+                                        <h4 className='fw-bold mny'>₦{numeral(val.product.price).format("0,0")}</h4>
+                                        <p className="listBy text-capitalize">In stock</p>
                                         {val.status == "active" && <p className="status text-capitalize">Status : {val.status ?? "N/A"}</p>}
                                         {val.status == "cancel" && <p className="status bg-danger text-light text-capitalize">Status : {"Cancelled" ?? "N/A"}</p>}
-                                        {/* <p className="status text-capitalize">Date : {moment().format(`${val.createdAt.split("-")[0]}-${val.createdAt.split("-")[1]}-${val.createdAt.split("-")[2].split("T")[0]}`,) ?? "N/A"} </p> */}
-                                        {/* <p className="status">Time : {moment(val.createdAt).startOf('mins').fromNow() ?? "N/A"} </p> */}
                                     </div>
                                 </div>
                             )

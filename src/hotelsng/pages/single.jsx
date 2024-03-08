@@ -9,6 +9,7 @@ import NavBar from '../../components/navBar'
 
 export default function Single() {
   const [queryParameters] = useSearchParams()
+  const [role, setRole] = useState("jamiu@gmail.com");
   const [loaded, setLoaded] = useState(false)
   const [product, setproduct] = useState([])
   const [owner, setowner] = useState("")
@@ -95,6 +96,11 @@ export default function Single() {
     var addy = document.querySelector(".addy")
     var phoneNumber = document.querySelector(".phone")
     var states = document.querySelector(".state")
+
+    if(user.email == role){
+      alert("info", "Admin cannot place an order")
+      return
+    } 
 
     
     if(state.current.value == ""){
