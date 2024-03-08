@@ -5,6 +5,7 @@ import "/public/css/product.css"
 import "/public/css/vendor_dashboard.css"
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import numeral from 'numeral';
 import axios from "../../utils/axios";
 
 export default function Dashboard() {
@@ -152,7 +153,7 @@ export default function Dashboard() {
           <SideBar role={role} />
 
           <div className="main_content">
-            <Topbar role={role}/>
+            <Topbar role={role} toggle={toggle}/>
 
             <div className="products special d-flex">
               <div className="pagination">
@@ -239,11 +240,17 @@ export default function Dashboard() {
                       <div className="box">
                         <img src={val.image ? `${val.image}` : "packages"} alt="" />
                         <div className="text p-3">
-                          <p className="fw-bold mb-0 text-capitalize">
+                          <h5 className="fw-bold mb-2 text-capitalize">
                             {val.name}
-                          </p>
-                          <p className="text-muted desc info text-capitalize">
-                            {val.description}.
+                          </h5>                       
+                          <p className="text-muted desc mb-0 info text-capitalize">
+                            {val.category}
+                          </p> 
+                          <p className="text-muted text-truncate mb-1 desc info text-capitalize">
+                            {val.description}
+                          </p>                         
+                          <p className="text-muted mb-2">
+                            {val.capacity}ml
                           </p>
                           <p
                             className="text-danger btn"
@@ -253,9 +260,7 @@ export default function Dashboard() {
                           </p>
                           <h4 className="fw-bold mny">
                             ₦
-                            {val.price
-                              .toString()
-                              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
+                            {numeral(val.price).format("0,0")}
                           </h4>
                         </div>
                       </div>
