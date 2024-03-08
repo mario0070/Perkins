@@ -8,7 +8,7 @@ import { useCookies } from "react-cookie";
 import axios from "../../utils/axios";
 
 export default function Dashboard() {
-    const [role, setRole] = useState("Vendor");
+    const [role, setRole] = useState("jamiu@gmail.com");
     const [show, setShow] = useState(false);
     const [loaded, setloaded] = useState(false);
     const [product, setproduct] = useState([]);
@@ -19,6 +19,7 @@ export default function Dashboard() {
     const price = useRef("");
     const [file, setFile] = useState();
     const [img, setImg] = useState("");
+    const [admin, setAdmin] = useState("jamiu@gmail.com");
     const [category, setcategory] = useState([]);
     const [initialcategory, setinitialcategory] = useState("Select Category");
   
@@ -151,7 +152,7 @@ export default function Dashboard() {
           <SideBar role={role} />
 
           <div className="main_content">
-            <Topbar/>
+            <Topbar role={role}/>
 
             <div className="products special d-flex">
               <div className="pagination">

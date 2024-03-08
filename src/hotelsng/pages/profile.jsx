@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie'
 export default function Profile() {
     const [cookie, setCookie, removeCookie] = useCookies("")
     const [user, setUser] = useState(cookie.user ?? "")
-    const [role, setRole] = useState("Vendor")
+    const [role, setRole] = useState("jamiu@gmail.com")
 
     const toggle = () => {
         const topbar = document.querySelector(".topbar")
@@ -43,7 +43,7 @@ export default function Profile() {
                 <SideBar role={role}/>
 
                 <div className="main_content">
-                    <Topbar toggle={toggle}/>
+                    <Topbar toggle={toggle} role={role}/>
 
                     <div className="special profile d-flex">
                         <div className="img">

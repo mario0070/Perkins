@@ -21,7 +21,7 @@ Chartjs.register(
 export default function VendorDashboard() {
   const [totalproduct, settotalproduct] = useState(0)
   const [totalorder, settotaltotalorder] = useState(0)
-  const [role, setRole] = useState("Vendor")
+  const [role, setRole] = useState("jamiu@gmail.com")
   const [loaded, setloaded] = useState(false)
   const [cookie, setCookie, removeCookie] = useCookies("")
   const [user, setUser] = useState(cookie.user ??  "")

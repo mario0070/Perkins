@@ -18,7 +18,7 @@ Chartjs.register(
 )
 
 export default function Analytics() {
-    const [role, setRole] = useState("Vendor")
+    const [role, setRole] = useState("jamiu@gmail.com")
     const [lineChart , setlineChart] = useState([])
     const [cookie, setCookie, removeCookie] = useCookies("")
     const [user, setUser] = useState(cookie.user ??  "")
@@ -86,7 +86,7 @@ export default function Analytics() {
                 <SideBar role={role}/>
 
                 <div className="main_content">
-                    <Topbar toggle={toggle}/>
+                    <Topbar toggle={toggle} role={role}/>
 
                     <div className="special analytic">
                         <div className="box">
