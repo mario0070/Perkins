@@ -67,7 +67,7 @@ export default function VendorDashboard() {
   if(cookie.user){
 
     useEffect(() => {
-      if(user.role == "vendor"){
+      if(user.email == role){
         axios.post("/product/vendor-product", {
             id : user._id
         }).then(res => {

@@ -67,9 +67,9 @@ export default function Topbar({toggle, role}) {
           <div className="top">
           <div className="links">
               <p className=""><a href="/dashboard" className='side_link'><i class="fa-solid fa-house"></i> Dashboard</a></p>
-              {role == "jamiu@gmail.com" &&  <p className=""><a className='side_link' href="/products"><i class="fa-brands fa-product-hunt"></i> Products</a></p>}
+              {user.email == role &&  <p className=""><a className='side_link' href="/products"><i class="fa-brands fa-product-hunt"></i> Products</a></p>}
               <p className=""><a className='side_link' href="/analytic"><i class="fa-solid fa-chart-simple"></i> Analytic</a></p>
-              {role != "jamiu@gmail.com" && <p className=""><a className='side_link' href="/orders"><i class="fa-brands fa-first-order-alt"></i> Orders</a></p>}
+              {user.email != role && <p className=""><a className='side_link' href="/orders"><i class="fa-brands fa-first-order-alt"></i> Orders</a></p>}
               <p className=""><a className='side_link' href="/profile"><i class="fa-solid fa-user"></i> Profile</a></p>
               <p className="" onClick={logOut}><a className='side_link' href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a></p>
           </div>
