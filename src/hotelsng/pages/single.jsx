@@ -71,7 +71,62 @@ export default function Single() {
         title: msg
       });
   }
-  
+
+  const reqApi = () => {
+    alert("success","Thanks for doing business with us! Come back soon!!")
+    axios.post("/order/create", {
+      orderBy : user._id,
+      owner : product.owner._id,
+      product : product._id,
+    })
+    .then(res => {
+        alert("success", "Order created successfully😃")
+    })
+    .catch(error => {
+        console.log(error)
+        alert("error", "Something went error")
+    })
+  }  
+
+  const mainOrder = () => {
+    var orderbtn = document.querySelector(".orderbtn")
+    var addy = document.querySelector(".addy")
+    var phoneNumber = document.querySelector(".phone")
+    var states = document.querySelector(".state")
+
+    
+    if(state.current.value == ""){
+      alert("warning", "Enter your state location")
+      state.current.focus()
+      addy.classList.remove("error")
+      phoneNumber.classList.remove("error")
+      states.classList.add("error")
+      return;
+    }
+
+    if(address.current.value == ""){
+      alert("warning", "Enter your full address")
+      address.current.focus()
+      addy.classList.add("error")
+      phoneNumber.classList.remove("error")
+      states.classList.remove("error")
+      return;
+    }
+
+    if(userphone.current.value == ""){
+      alert("warning", "Enter a valid phone number")
+      userphone.current.focus()
+      addy.classList.remove("error")
+      phoneNumber.classList.add("error")
+      states.classList.remove("error")
+      return;
+    }
+
+    addy.classList.remove("error")
+    states.classList.remove("error")
+    phoneNumber.classList.remove("error")
+    setisFill(true)
+  }
 
   const increase = () => {
     setquantity(quantity + 1)
@@ -90,7 +145,7 @@ export default function Single() {
     let handler = PaystackPop.setup({
       key: 'pk_test_98e99f884464bd11201d04f1c2cebf94136083db',
       email,
-      amount,
+      amount: 3000,
       name,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1),
       onClose: function(){
@@ -124,7 +179,15 @@ export default function Single() {
                     <p className="mb-1 disc">₦23002</p>
                     <p className="stock">in stock</p>
                     <p className="shipping">+ shipping from ₦550 to your location</p>
-                    <button onClick={payWithPaystack} className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button>
+                    {user && 
+                      <>
+                        {!isFill && <button onClick={mainOrder} className='btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button>}
+
+                        {/* {isFill && <PaystackButton className='btn orderbtn' {...componentProps} />} */}
+                        {isFill && <button onClick={payWithPaystack} className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button>}
+                      </>
+                    }
+                    {!user && <a href="/login"><button className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button></a>}
                     
                     <div className='btn qty mt-4 d-flex'>
                       <i className="btn fa-solid fa-minus" onClick={decrease}></i> 
