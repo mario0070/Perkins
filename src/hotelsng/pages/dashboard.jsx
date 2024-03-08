@@ -18,6 +18,7 @@ export default function Dashboard() {
     const name = useRef("");
     const description = useRef("");
     const price = useRef("");
+    const capacity = useRef("");
     const [file, setFile] = useState();
     const [img, setImg] = useState("");
     const [admin, setAdmin] = useState("jamiu@gmail.com");
@@ -104,12 +105,14 @@ export default function Dashboard() {
         submitbtn.innerHTML = `Processing <div class="spinner-border spinner-border-sm"></div>`;
 
         const formData = new FormData();
-        formData.append("file", img[0]);
+        formData.append("files", img[0]);
         formData.append("name", name.current.value);
         formData.append("description", description.current.value);
         formData.append("price", price.current.value);
         formData.append("owner", user._id);
-        console.log(formData);
+        formData.append("capacity", capacity.current.value);
+        formData.append("category", initialcategory);
+        formData.append("isAvaialble", true);
 
         axios
         .post("/product/create", formData)
@@ -118,12 +121,14 @@ export default function Dashboard() {
             name.current.value = "";
             price.current.value = "";
             description.current.value = "";
+            capacity.current.value = ""
             submitbtn.innerHTML = "Add Product";
+            setinitialcategory("Select Category")
             setImg("");
         })
         .catch((error) => {
             alert("error", "something went wrong");
-            console.log(error, img[0]);
+            console.log(error);
             submitbtn.innerHTML = "Add Product";
         });
     };
@@ -137,7 +142,6 @@ export default function Dashboard() {
             id: user._id,
         })
         .then((res) => {
-          console.log(res)
             setloaded(true);
             setproduct(res.data.data);
         })
@@ -199,6 +203,7 @@ export default function Dashboard() {
                         placeholder="Product Name"
                       />
                       <input
+                      ref={capacity}
                         required
                         type="text"
                         className="mt-3"
@@ -213,7 +218,7 @@ export default function Dashboard() {
                         className="mb-4 mt-3"
                       />
 
-                      <textarea required name="" id="" cols="30" rows="5"  placeholder="Description"></textarea>
+                      <textarea ref={description} required name="" id="" cols="30" rows="5"  placeholder="Description"></textarea>
 
                       <label htmlFor="file">
                         Choose product image <i class="fa-solid fa-camera"></i>
