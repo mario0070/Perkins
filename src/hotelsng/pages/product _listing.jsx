@@ -7,6 +7,9 @@ import numeral from 'numeral';
 export default function ProductListing() {
   const [product, setproduct] = useState([]);
   const [category, setcategory] = useState([]);
+  const [searchVal, setsearchVal] = useState("");
+  const [isloaded, setisloaded] = useState(false);
+  const [isEmpty, setisEmpty] = useState(false);
   const [initialcategory, setinitialcategory] = useState("Select Category");
 
   const selectCat = (cat) => {
@@ -17,14 +20,37 @@ export default function ProductListing() {
     setcategory(["Floral", "Fruity", "Oriental", "Woody", "Citrus", "Gourmand"])
     axios.get("/product")
     .then(res => {
-        console.log(res)
         setproduct(res.data.data)
+        setisloaded(true)
     })
     .catch(error => {
         console.log(error)
     })
 
-  }, [product]);
+  }, []);
+
+  const searchProduct = () => {
+    if(searchVal == ""){
+      return
+    }
+    var search = document.querySelector(".search")
+    search.innerHTML = `Processing <div class="spinner-border spinner-border-sm text-white"> </div>`
+    axios.post("/product/search-product", {
+      name : searchVal
+    })
+    .then(res => {
+        setproduct(res.data.data)
+        setisEmpty(false)
+        search.innerHTML = "Search"
+        if(res.data.data.length == 0){
+          setisEmpty(true)
+        }
+    })
+    .catch(error => {
+        console.log(error)
+        search.innerHTML = "Search"
+    })
+  }
 
   return (
     <div className="single listing homepage">
@@ -47,15 +73,24 @@ export default function ProductListing() {
                 }
               </ul>
             </div>
-            <input type="text"  placeholder="search product by categories, year, price, brand etc"/>
-            <button className="search">Search</button>
+            <input type="text" onChange={e => setsearchVal(e.target.value)}  placeholder="search product by categories, year, price, brand etc"/>
+            <button onClick={searchProduct} className="search">Search</button>
           </div>
 
             {
-                product.length == 0 &&
+                !isloaded &&
                 <>
                     <div className="text-center mt-5" style={{marginBottom: "20em"}}>
                         <div className="spinner-border text-center text-danger"></div>
+                    </div>
+                </>
+            }
+
+            {
+                isEmpty &&
+                <>
+                    <div className="text-center mt-5" style={{marginBottom: "20em"}}>
+                        <h4 className="">0 product found</h4>
                     </div>
                 </>
             }
