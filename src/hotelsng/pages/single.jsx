@@ -4,6 +4,7 @@ import axios from '../../utils/axios'
 import "/public/css/landingpage.css"
 import { useCookies } from 'react-cookie'
 import Footer from '../../components/footer'
+import numeral from 'numeral';
 import NavBar from '../../components/navBar'
 
 export default function Single() {
@@ -39,20 +40,21 @@ export default function Single() {
   }
 
 
-  // useEffect(() => {
-  //   axios.post("/product/show", {
-  //     id : queryParameters.get("uuid")
-  //   })
-  //   .then(res => {
-  //       setprice(res.data.data[0].price * 100)
-  //       setLoaded(true)
-  //       setproduct(res.data.data[0])
-  //       setowner(res.data.data[0].owner)
-  //   })
-  //   .catch(error => {
-  //       console.log(error)
-  //   })
-  // },[])
+  useEffect(() => {
+    axios.post("/product/show", {
+      id : queryParameters.get("uuid")
+    })
+    .then(res => {
+      console.log(res)
+        setprice(res.data.data[0].price * 100)
+        setLoaded(true)
+        setproduct(res.data.data[0])
+        setowner(res.data.data[0].owner)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+  },[])
 
   const alert = (icon, msg) => {
     const Toast = Swal.mixin({
@@ -145,7 +147,7 @@ export default function Single() {
     let handler = PaystackPop.setup({
       key: 'pk_test_98e99f884464bd11201d04f1c2cebf94136083db',
       email,
-      amount: 3000,
+      amount,
       name,
       ref: ''+Math.floor((Math.random() * 1000000000) + 1),
       onClose: function(){
@@ -166,17 +168,18 @@ export default function Single() {
       <NavBar/>
 
        <div className="main d-flex">
-        {!loaded &&
+        {loaded &&
           <>
             <div className="box left d-flex">
                 <div className="images">
-                  <img src="" alt="" />
+                  <img src={product.image} alt="" />
                 </div>
                 
                 <div className="text">
                     <h4 className='fw-bold text-muted text-capitalize'>{product.name}</h4>
-                    <h2 className="mny fw-bold mb-1">₦3000</h2>
-                    <p className="mb-1 disc">₦23002</p>
+                    <h6 className='fw-bold text-muted text-capitalize'>{product.category}</h6>
+                    <h2 className="mny fw-bold mb-1">₦{numeral(product.price).format("0,0")}</h2>
+                    <p className="mb-1 disc">₦{numeral(Number(product.price) + 800).format("0,0")}</p>
                     <p className="stock">in stock</p>
                     <p className="shipping">+ shipping from ₦550 to your location</p>
                     {user && 
@@ -189,7 +192,7 @@ export default function Single() {
                     }
                     {!user && <a href="/login"><button className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button></a>}
                     
-                    <div className='btn qty mt-4 d-flex'>
+                    <div className='btn qty mt-0 d-flex'>
                       <i className="btn fa-solid fa-minus" onClick={decrease}></i> 
                         <span>{quantity}</span>
                       <i className="btn fa-solid fa-plus" onClick={increase}></i>
@@ -197,7 +200,7 @@ export default function Single() {
 
                     <div className="mt-5">
                       <p className='fw-bold text-muted mb-1'>Product Description</p>
-                      <p className="desc text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit corrupti et eum optio ab, debitis, ipsa est facere consequuntur, dolorem animi laudantium dolorum asperiores! Voluptatem reiciendis alias enim itaque iste?</p>
+                      <p className="desc text-capitalize">{product.description}</p>
                     </div>
 
                    
@@ -230,11 +233,11 @@ export default function Single() {
         }
        </div>
 
-        {/* {!loaded &&
-         <div className="text-center mb-5 mt-1">
-            <img src="" alt="" width={400} />
+        {!loaded &&
+        <div className="text-center mt-5" style={{marginBottom: "20em"}}>
+            <div className="spinner-border text-center text-danger"></div>
         </div>
-        } */}
+        }
 
         <div className="recommended">
           <h4 className='fw-bold text-center mb-4'>Recommended <span className="text-danger">Perfumes</span></h4>

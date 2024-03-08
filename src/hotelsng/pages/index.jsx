@@ -36,7 +36,7 @@ export default function Index() {
                   <i class="fa-regular fa-star"></i>
                   <i class="fa-regular fa-star"></i>
                 </div>
-                <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
+                <a href="/shop-perfumes" className="mt-3 fw-semibold btn-warning btn">View all Products</a>
               </div>
             </div>
             
@@ -58,7 +58,7 @@ export default function Index() {
                   <i class="fa-solid fa-star text-warning"></i>
                   <i class="fa-regular fa-star"></i>
                 </div>
-                <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
+                <a href="/shop-perfumes" className="mt-3 fw-semibold btn-warning btn">View all Products</a>
               </div>
             </div>
             
@@ -81,7 +81,7 @@ export default function Index() {
                       <i class="fa-regular fa-star"></i>
                       <i class="fa-regular fa-star"></i>
                     </div>
-                    <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
+                    <a href="/shop-perfumes" className="mt-3 fw-semibold btn-warning btn">View all Products</a>
                 </div>
               </div>
             </div>

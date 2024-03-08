@@ -81,7 +81,7 @@ export default function ProductListing() {
                         <i class="fa-solid fa-star text-warning"></i>
                         <i class="fa-solid fa-star text-warning"></i>
                       </div>
-                      <a href={"/product/" + val._id} className="mt-3 fw-semibold btn-warning btn">View Product</a>
+                      <a href={"/product/" + val.name + "?uuid=" + val._id} className="mt-3 fw-semibold btn-warning btn">View Product</a>
                     </div>
                   </div>
                 )
