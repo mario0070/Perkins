@@ -171,6 +171,13 @@
     border: none !important;
 }
 
+.desc_prod{
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1em !important;
+}
+
 .text-danger{
     color: var(--primary) !important;
 }

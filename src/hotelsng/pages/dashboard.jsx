@@ -245,18 +245,18 @@ export default function Dashboard() {
                       <div className="box">
                         <img src={val.image ? `${val.image}` : "packages"} alt="" />
                         <div className="text p-3">
-                          <h5 className="fw-bold text-truncate mb-0 text-capitalize">
+                          <h5 className="fw-bold text-truncate mb-1 text-capitalize">
                             {val.name}
                           </h5>                       
-                          <p className="text-muted desc mb-2 info text-capitalize">
+                          <p className="text-muted fw-bold desc mb-0 info text-capitalize">
                             {val.category}
-                          </p> 
-                          <p className="text-muted mb-1 info text-capitalize">
-                            {val.description}
-                          </p>                         
-                          <p className="text-muted mb-2">
-                            {val.capacity}ml
+                          </p>                       
+                          <p className="text-muted fw-bold mb-2">
+                            Capacity: {val.capacity}ml
                           </p>
+                          <p className="text-muted desc_prod mb-1 info text-capitalize">
+                            {val.description}
+                          </p>   
                           <p
                             className="text-danger btn"
                             onClick={() => deleteProduct(val._id)}

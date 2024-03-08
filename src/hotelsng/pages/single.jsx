@@ -269,28 +269,6 @@ export default function Single() {
 
         <div className="recommended">
           <h4 className='fw-bold text-center mb-4'>Recommended <span className="text-danger">Perfumes</span></h4>
-
-          <div className="d-flex">
-            {
-              category.reverse().map(val => {
-                return(
-                  <a href={"/product/" + val.name + "?uuid=" + val._id} className="box text-dark text-decoration-none">
-                    <div className="img">
-                      <img src={val.image} alt="" />
-                    </div>
-                    <div className="text">
-                        <p className="name fw-bold text-capitalize mb-0">{val.name}</p>
-                        <p style={{fontSize:"12px"}} className="cat mb-0">{val.category}</p>
-                      <p style={{fontSize:"12px"}} className="text-start mb-1">{val.capacity}ml</p>
-                        <h4 className="price text-danger fw-bold">₦{numeral(val.price).format("0,0")}</h4>
-                        <a style={{fontSize:"10px"}} href={"/product/" + val.name + "?uuid=" + val._id} className="mt-2 mb-2 fw-semibold btn-danger btn">View Product</a>
-                    </div>
-                  </a>
-                )
-              })
-            }
-          </div>
-
           <div className="d-flex mt-5">
           {
               category.map(val => {
