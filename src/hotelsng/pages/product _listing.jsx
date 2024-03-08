@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import Footer from "../../components/footer";
 import NavBar from "../../components/navBar";
+import numeral from 'numeral';
 
 export default function ProductListing() {
   const [product, setproduct] = useState([]);
@@ -14,7 +15,16 @@ export default function ProductListing() {
 
   useEffect(() => {
     setcategory(["Floral", "Fruity", "Oriental", "Woody", "Citrus", "Gourmand"])
-  }, []);
+    axios.get("/product")
+    .then(res => {
+        console.log(res)
+        setproduct(res.data.data)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+  }, [product]);
 
   return (
     <div className="single listing homepage">
@@ -41,95 +51,42 @@ export default function ProductListing() {
             <button className="search">Search</button>
           </div>
 
-          <div className="d-flex flex-wrap p-4">
+            {
+                product.length == 0 &&
+                <>
+                    <div className="text-center mt-5" style={{marginBottom: "20em"}}>
+                        <div className="spinner-border text-center text-danger"></div>
+                    </div>
+                </>
+            }
 
-            <div className="section2 p-0">
-              <div className="img-bg">
-                <img src="https://garcy-store-demo.myshopify.com/cdn/shop/articles/blog4_1024x1024_6e921ee2-7c22-4585-b5d6-05544deb68ae.jpg?crop=center&height=1024&v=1672717028&width=1024" alt="" />
-              </div>
-              <div className="text-lay text-white">
-                <h5 className="text-start fw-bold mt-2 mb-3 text-truncate">Black Opium Eau De</h5>
-                <p className="text-start mb-1">Availability: In Stock</p>
-                <p className="text-start mb-1">Brand: Sunglass</p>
-                <p className="text-start">Capacity: 200ml, 250ml</p>
-                <h2 className="text-start fw-bold">₦40,000</h2>
-                <div className="d-flex">
-                  <i class="fa-solid fa-star text-warning"></i>
-                  <i class="fa-solid fa-star text-warning"></i>
-                  <i class="fa-solid fa-star text-warning"></i>
-                  <i class="fa-solid fa-star text-warning"></i>
-                  <i class="fa-regular fa-star"></i>
-                </div>
-                <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
-              </div>
-            </div>
-            
-            <div className="section2 p-0">
-              <div className="img-bg">
-                <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-              </div>
-              <div className="text-lay">
-                <h5 className="text-start fw-bold mt-2 mb-3 text-truncate">Chanel N°5 Eau De</h5>
-                <p className="text-start mb-1">Availability: In Stock</p>
-                <p className="text-start mb-1">Brand: Bag</p>
-                <p className="text-start">Capacity: 150ml, 200ml</p>
-                <h2 className="text-start fw-bold">₦23,000</h2>
-                <div className="d-flex">
-                  <i class="fa-solid fa-star text-warning"></i>
-                  <i class="fa-solid fa-star text-warning"></i>
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                </div>
-                <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
-              </div>
-            </div>
-            
-            <div className="section2 p-0">
-              <div className="img-bg">
-                <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba21.jpg?v=1672908689" alt="" />
-              </div>
-              <div className="text-lay">
-                <div className="mx-auto">
-                    <h5 className="text-start fw-bold mt-2 text-truncate mb-3">Angel Natural Refillable</h5>
-                    <p className="text-start mb-1">Availability: In Stock</p>
-                    <p className="text-start mb-1">Brand: Sunglass</p>
-                    <p className="text-start">Capacity: 200ml, 250ml</p>
-                    <h2 className="text-start fw-bold">₦80,000</h2>
-                    
-                  <div className="d-flex">
-                    <i class="fa-solid fa-star text-warning"></i>
-                    <i class="fa-solid fa-star text-warning"></i>
-                    <i class="fa-solid fa-star text-warning"></i>
-                    <i class="fa-solid fa-star text-warning"></i>
-                    <i class="fa-solid fa-star text-warning"></i>
+          <div className="d-flex flex-wrap p-4">
+            {
+              product.map(val => {
+                return(
+                  <div className="section2 p-0">
+                    <div className="img-bg">
+                      <img src={val.image} alt="" />
+                    </div>
+                    <div className="text-lay text-white">
+                      <h5 className="text-start fw-bold mt-2 mb-3 text-capitalize text-truncate">{val.name}</h5>
+                      <p className="text-start mb-1">Availability: In Stock</p>
+                      <p className="text-start mb-1">Category: {val.category}</p>
+                      <p className="text-start">Capacity: {val.capacity}ml</p>
+                      <h2 className="text-start fw-bold">₦{numeral(val.price).format("0,0")}</h2>
+                      <div className="d-flex">
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                      </div>
+                      <a href={"/product/" + val._id} className="mt-3 fw-semibold btn-warning btn">View Product</a>
+                    </div>
                   </div>
-                    <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
-                </div>
-              </div>
-            </div>
-            
-            <div className="section2 p-0">
-              <div className="img-bg">
-                <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-              </div>
-              <div className="text-lay">
-                <h5 className="text-start mt-2 fw-bold mb-3 text-truncate">Chanel N°5 Eau De</h5>
-                <p className="text-start mb-1">Availability: In Stock</p>
-                <p className="text-start mb-1">Brand: Bag</p>
-                <p className="text-start">Capacity: 150ml, 200ml</p>
-                <h2 className="text-start fw-bold">₦23,000</h2>
-                
-                <div className="d-flex">
-                    <i class="fa-solid fa-star text-warning"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                  </div>
-                <a href="/product/id" className="mt-3 fw-semibold btn-warning btn">View Product</a>
-              </div>
-            </div>
+                )
+              })
+            }
 
           </div>
         </div>
