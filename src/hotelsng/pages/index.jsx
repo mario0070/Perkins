@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, redirect } from 'react-router-dom'
 import "/public/css/landingpage.css"
 import logo from "/img/logo.png"
 import logox1 from "/img/greenlogo.png"
 import Footer from '../../components/footer'
 import NavBar from '../../components/navBar'
+import axios from "../../utils/axios";
+import numeral from 'numeral';
 
 export default function Index() {
+  const [product, setproduct] = useState([]);
+  const [isloaded, setisloaded] = useState(false);
+
+  useEffect(() => {
+    axios.get("/product")
+    .then(res => {
+        setproduct(res.data.data)
+        setisloaded(true)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+  }, []);
 
 
   return (
@@ -89,132 +105,56 @@ export default function Index() {
 
           <h2 className="fw-bold text-center mt-5">Hot <span className="text-danger">Deals</span></h2>
           <p className="text-center">Don't Miss Today's Featured Deals</p>
+          {
+            !isloaded &&
+            <>
+                <div className="text-center mt-5" style={{marginBottom: "20em"}}>
+                    <div className="spinner-border text-center text-danger"></div>
+                </div>
+            </>
+          }
 
           <div className="recommended">
             <div className="d-flex">
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
+              {
+                product.map(val => {
+                  return(
+                    <a href={"/product/" + val.name + "?uuid=" + val._id} className="box text-dark text-decoration-none">
+                      <div className="img">
+                        <img src={val.image} alt="" />
+                      </div>
+                      <div className="text">
+                          <p className="name fw-bold text-capitalize mb-0">{val.name}</p>
+                          <p style={{fontSize:"12px"}} className="cat mb-0">{val.category}</p>
+                        <p style={{fontSize:"12px"}} className="text-start mb-1">{val.capacity}ml</p>
+                          <h4 className="price text-danger fw-bold">₦{numeral(val.price).format("0,0")}</h4>
+                          <a style={{fontSize:"10px"}} href={"/product/" + val.name + "?uuid=" + val._id} className="mt-2 mb-2 fw-semibold btn-danger btn">View Product</a>
+                      </div>
+                    </a>
+                  )
+                })
+              }
             </div>
 
             <div className="d-flex mt-5">
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
-              <a href='#' className="box text-dark text-decoration-none">
-                <div className="img">
-                  <img src="https://garcy-store-demo.myshopify.com/cdn/shop/files/ba20.jpg?v=1672908675" alt="" />
-                </div>
-              <div className="text">
-                  <p className="name mb-0">name</p>
-                  <p className="cat">category</p>
-                  <h4 className="price text-warning fw-bold">5000</h4>
-              </div>
-              </a>
+              {
+                product.reverse().map(val => {
+                  return(
+                    <a href={"/product/" + val.name + "?uuid=" + val._id} className="box text-dark text-decoration-none">
+                      <div className="img">
+                        <img src={val.image} alt="" />
+                      </div>
+                      <div className="text">
+                          <p className="name fw-bold text-capitalize mb-0">{val.name}</p>
+                          <p style={{fontSize:"12px"}} className="cat mb-0">{val.category}</p>
+                        <p style={{fontSize:"12px"}} className="text-start mb-1">{val.capacity}ml</p>
+                          <h4 className="price text-danger fw-bold">₦{numeral(val.price).format("0,0")}</h4>
+                          <a style={{fontSize:"10px"}} href={"/product/" + val.name + "?uuid=" + val._id} className="mt-2 mb-2 fw-semibold btn-danger btn">View Product</a>
+                      </div>
+                    </a>
+                  )
+                })
+              }
             </div>
 
           </div>
