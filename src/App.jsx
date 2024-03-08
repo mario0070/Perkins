@@ -10,6 +10,7 @@ import Products from './hotelsng/pages/dashboard'
 import Dashboard from './hotelsng/pages/vendor_dashboard'
 import Profile from './hotelsng/pages/profile'
 import Analytic from './hotelsng/pages/analytic'
+import AllOrders from './hotelsng/pages/all_order'
 import AuthProvider from './utils/Context'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route element={<Listing/>} path='/shop-perfumes'/>
             <Route element={<Dashboard/>} path='/dashboard'/>
             <Route element={<Single/>} path='/product/:id'/>
+            <Route element={<AllOrders/>} path='/orders'/>
             <Route element={<NotFound/>} path="*"/>
           </Routes>
       </AuthProvider>

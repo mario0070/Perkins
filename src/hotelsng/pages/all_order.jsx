@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Sidebar from '../components/side_bar'
-import Topbar from '../components/topbar'
+import Sidebar from '../../components/side_bar'
+import Topbar from '../../components/topbar'
 import "/public/css/product.css"
 import banner3 from "/img/home-banner3.jpg"
-import phone from "/img/phone1.jpeg"
-import packages from "/img/Packages.jpg"
 import { useCookies } from 'react-cookie'
-import axios from '../utils/axios'
+import axios from '../../utils/axios'
 // import moment from 'moment'
 
 export default function allOrders() {
