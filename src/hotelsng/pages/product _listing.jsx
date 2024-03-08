@@ -62,6 +62,16 @@ export default function ProductListing() {
       .catch(error => {
           console.log(error)
       })
+
+      if(name == "All"){
+        axios.get("/product")
+        .then(res => {
+            setproduct(res.data.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+      }
   }
 
   return (
@@ -76,10 +86,13 @@ export default function ProductListing() {
                 {initialcategory}
               </button>
               <ul class="dropdown-menu">
+                  <li onClick={() => {selectCat("All"); selectCategory("All")}}><a class="dropdown-item" href="#">All</a></li>
                 {
                   category.map(val => {
                     return (
+                      <>
                       <li onClick={() => {selectCat(val); selectCategory(val)}}><a class="dropdown-item" href="#">{val}</a></li>
+                      </>
                     )
                   })
                 }
