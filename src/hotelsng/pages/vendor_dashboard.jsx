@@ -108,8 +108,7 @@ export default function VendorDashboard() {
             console.log(error)
         })
       }
-
-      if(user.role == "user"){
+      else{
         axios.post("/order/orderby", {
           orderBy : user._id
         }).then(res => {
@@ -171,7 +170,7 @@ export default function VendorDashboard() {
                   </div>
 
                   <div className="right">
-                      <div className="d-flex">
+                     { user.email == role && <div className="d-flex">
                         <div className="box">
                             <p className="">Active Orders</p>
                             <p className="icon"><i class="fa-brands fa-first-order-alt"></i></p>
@@ -193,8 +192,9 @@ export default function VendorDashboard() {
                           <h4 className="revenue">₦{!loaded ? <div class="text-center text-dark spinner-border spinner-border-sm"></div> : spending.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}</h4>
                         </div>
                       </div>
+                      }
                     
-                    { user.role == "user" &&
+                    {  user.email != role &&
                       <div className="d-flex">
                         <div className="box">
                             <p className="">Active Orders</p>
