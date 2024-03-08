@@ -245,13 +245,13 @@ export default function Dashboard() {
                       <div className="box">
                         <img src={val.image ? `${val.image}` : "packages"} alt="" />
                         <div className="text p-3">
-                          <h5 className="fw-bold mb-2 text-capitalize">
+                          <h5 className="fw-bold text-truncate mb-0 text-capitalize">
                             {val.name}
                           </h5>                       
-                          <p className="text-muted desc mb-0 info text-capitalize">
+                          <p className="text-muted desc mb-2 info text-capitalize">
                             {val.category}
                           </p> 
-                          <p className="text-muted text-truncate mb-1 desc info text-capitalize">
+                          <p className="text-muted mb-1 info text-capitalize">
                             {val.description}
                           </p>                         
                           <p className="text-muted mb-2">
