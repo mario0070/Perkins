@@ -46,7 +46,7 @@ export default function Sidebar({role}) {
   return (
     <div className="sidebar">
         <div className="top">
-        <h2 className='p-2 mt-2 mb-4 text-white'><a href="/">Swift</a></h2>
+        <h2 className='p-2 mt-2 mb-4 text-white'><a href="/">Scentasy</a></h2>
         <div className="links">
             <p className="text-capitalize"><Link to="/dashboard" className='side_link'><i class="fa-solid fa-house"></i> {user.role} Dashboard</Link></p>
             {user.email == role && <p className=""><Link className='side_link' to="/products"><i class="fa-brands fa-product-hunt"></i> Products</Link></p>}

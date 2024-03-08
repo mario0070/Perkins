@@ -60,7 +60,7 @@ export default function Topbar({toggle, role}) {
 
         <div class="offcanvas offcanvas-start mobile_sidebar" id="sideline">
           <div class="offcanvas-header">
-            <h2 class="offcanvas-title"><a href="/">Swift</a></h2>
+            <h2 class="offcanvas-title"><a href="/">Scentasy</a></h2>
             <button type="button" class="btn-close btn-white text-white text-reset" data-bs-dismiss="offcanvas"></button>
           </div>
           <div class="offcanvas-body">

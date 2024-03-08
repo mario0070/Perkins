@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from "/img/logo.png"
+import { useCookies } from 'react-cookie';
 
 export default function SideBar() {
+    const [cookie, setCookie, removeCookie] = useCookies("");
+    const [user, setUser] = useState(cookie.user ?? "");
 
     return (
         <div className="offcanvas offcanvas-start show-sidebar">
@@ -25,12 +28,12 @@ export default function SideBar() {
                     <li className="nav-item mb-4">
                         <a className="nav-link" href="/shop-perfumes"><i class="fa-brands fa-product-hunt"></i> Shop Perfumes</a>
                     </li>
-                    <li className="nav-item mb-4">
+                    {!user && <li className="nav-item mb-4">
                         <a className="nav-link" href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
-                    </li>
-                    <li className="nav-item mb-4">
+                    </li>}
+                    {!user &&<li className="nav-item mb-4">
                         <a className="nav-link" href="/signup"><i class="fa-solid fa-right-from-bracket"></i> Sign up</a>
-                    </li>
+                    </li>}
                     <li className="nav-item mb-4">
                         <a className="nav-link" href="#"><i class="fa-solid fa-gears"></i> Settings</a>
                     </li>
@@ -41,9 +44,9 @@ export default function SideBar() {
         <nav className="navbar bottom-link mt-4 navbar-expand-sm navbar-light">
             <div className="w-100">
                 <ul className="navbar-nav">
-                    <li className="nav-item">
+                {user &&<li className="nav-item">
                         <Link className="nav-link" ><i className="fa-solid fa-power-off"></i> Log Out</Link>
-                    </li>
+                    </li>}
                 </ul>
             </div>
         </nav>

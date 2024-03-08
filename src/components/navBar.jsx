@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from "/img/logo.png"
 import SideBar from './sideBar';
+import { useCookies } from "react-cookie";
 
 export default function NavBar() {
+    const [cookie, setCookie, removeCookie] = useCookies("");
+    const [user, setUser] = useState(cookie.user ?? "");
     const alertModal = () => {
         Swal.fire({
             title: "Are you sure?",
@@ -56,12 +59,12 @@ export default function NavBar() {
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/shop-perfumes"><i className="fa-solid fa-bars"></i> Shop Perfumes</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    {!user &&<li className="nav-item">
                                         <Link className="nav-link" to="/login"><i className="fa-solid fa-bars"></i> Login</Link>
-                                    </li>
-                                    <li className="nav-item">
+                                    </li>}
+                                    {!user &&<li className="nav-item">
                                         <Link className="nav-link" to="/signup"><i className="fa-solid fa-bars"></i> Sign up</Link>
-                                    </li>
+                                    </li>}
                                 </ul>
                             </div>
                         </nav>
@@ -69,9 +72,9 @@ export default function NavBar() {
                         <nav className="navbar bottom-link mt-4 navbar-expand-sm navbar-light">
                             <div className="w-100">
                                 <ul className="navbar-nav">
-                                    <li className="nav-item">
+                                    {user &&<li className="nav-item">
                                         <Link className="nav-link" ><i className="fa-solid fa-power-off"></i> Log Out</Link>
-                                    </li>
+                                    </li>}
                                 </ul>
                             </div>
                         </nav>
@@ -81,7 +84,8 @@ export default function NavBar() {
                     <li className="list-unstyled"><a href="/">Home</a></li>
                     <li className="list-unstyled"><a href="/dashboard">Dashboard</a></li>
                     <li className="list-unstyled"><a href="/shop-perfumes">Shop</a></li>
-                    <li className="list-unstyled"><a href="/signup" className='btn fw-bold'>Sign Up</a></li>
+                    {!user && <li className="list-unstyled"><a href="/signup" className='btn fw-bold'>Sign Up</a></li>}
+                    {user && <li className="list-unstyled"><a href="#" className='btn fw-bold'>Log Out</a></li>}
                     
                     </ul>
                 </div>
