@@ -166,6 +166,15 @@
     margin-bottom: 2em;
 }
 
+.btn-danger{
+    background-color: var(--primary) !important;
+    border: none !important;
+}
+
+.text-danger{
+    color: var(--primary) !important;
+}
+
 .single .section2{
     width: 280px !important;
     overflow: hidden !important;

@@ -24,6 +24,8 @@ export default function Single() {
   const [phone, setPhone] = useState(user.phone)
   const [amount, setprice] = useState(0)
   const [isFill, setisFill] = useState(false)
+  const [category, setcategory] = useState([])
+  const [allproduct, setallproduct] = useState([])
 
   const typeChange = () => {    
     var addy = document.querySelector(".addy")
@@ -46,7 +48,6 @@ export default function Single() {
       id : queryParameters.get("uuid")
     })
     .then(res => {
-      console.log(res)
         setprice(res.data.data[0].price * 100)
         setLoaded(true)
         setproduct(res.data.data[0])
@@ -55,7 +56,28 @@ export default function Single() {
     .catch(error => {
         console.log(error)
     })
-  },[])
+
+    console.log(product.category)
+
+    axios.post("/product/category", {
+      category : product.category
+    })
+    .then(res => {
+      setcategory(res.data.data)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+    axios.get("/product")
+    .then(res => {
+      setallproduct(res.data.data)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+  },[product])
 
   const alert = (icon, msg) => {
     const Toast = Swal.mixin({
@@ -249,29 +271,45 @@ export default function Single() {
           <h4 className='fw-bold text-center mb-4'>Recommended <span className="text-danger">Perfumes</span></h4>
 
           <div className="d-flex">
-            <a href='#' className="box text-decoration-none">
-              <div className="img">
-                <img src="https://images.timbu.com/hotels-ng/supplier_indigo_bar_restaurant_and_hotel_359895_1.jpg" alt="" />
-              </div>
-             <div className="text">
-                <p className="name mb-0">name</p>
-                <p className="cat">category</p>
-                <h4 className="price text-warning fw-bold">5000</h4>
-             </div>
-            </a>
+            {
+              category.reverse().map(val => {
+                return(
+                  <a href={"/product/" + val.name + "?uuid=" + val._id} className="box text-dark text-decoration-none">
+                    <div className="img">
+                      <img src={val.image} alt="" />
+                    </div>
+                    <div className="text">
+                        <p className="name fw-bold text-capitalize mb-0">{val.name}</p>
+                        <p style={{fontSize:"12px"}} className="cat mb-0">{val.category}</p>
+                      <p style={{fontSize:"12px"}} className="text-start mb-1">{val.capacity}ml</p>
+                        <h4 className="price text-danger fw-bold">₦{numeral(val.price).format("0,0")}</h4>
+                        <a style={{fontSize:"10px"}} href={"/product/" + val.name + "?uuid=" + val._id} className="mt-2 mb-2 fw-semibold btn-danger btn">View Product</a>
+                    </div>
+                  </a>
+                )
+              })
+            }
           </div>
 
           <div className="d-flex mt-5">
-            <a href='#' className="box text-decoration-none">
-              <div className="img">
-                <img src="https://images.timbu.com/hotels-ng/supplier_indigo_bar_restaurant_and_hotel_359895_1.jpg" alt="" />
-              </div>
-            <div className="text">
-                <p className="name mb-0">name</p>
-                <p className="cat">category</p>
-                <h4 className="price text-warning fw-bold">5000</h4>
-            </div>
-            </a>
+          {
+              category.map(val => {
+                return(
+                  <a href={"/product/" + val.name + "?uuid=" + val._id} className="box text-dark text-decoration-none">
+                    <div className="img">
+                      <img src={val.image} alt="" />
+                    </div>
+                    <div className="text">
+                        <p className="name fw-bold text-capitalize mb-0">{val.name}</p>
+                        <p style={{fontSize:"12px"}} className="cat mb-0">{val.category}</p>
+                      <p style={{fontSize:"12px"}} className="text-start mb-1">{val.capacity}ml</p>
+                        <h4 className="price text-danger fw-bold">₦{numeral(val.price).format("0,0")}</h4>
+                        <a style={{fontSize:"10px"}} href={"/product/" + val.name + "?uuid=" + val._id} className="mt-2 mb-2 fw-semibold btn-danger btn">View Product</a>
+                    </div>
+                  </a>
+                )
+              })
+            }
           </div>
 
         </div>
@@ -280,6 +318,24 @@ export default function Single() {
           <h4 className='fw-bold text-center mb-4'>People also <span className="text-danger">View</span></h4>
 
           <div className="d-flex">
+          {
+              allproduct.map(val => {
+                return(
+                  <a href={"/product/" + val.name + "?uuid=" + val._id} className="box text-dark text-decoration-none">
+                    <div className="img">
+                      <img src={val.image} alt="" />
+                    </div>
+                    <div className="text">
+                        <p className="name fw-bold text-capitalize mb-0">{val.name}</p>
+                        <p style={{fontSize:"12px"}} className="cat mb-0">{val.category}</p>
+                      <p style={{fontSize:"12px"}} className="text-start mb-1">{val.capacity}ml</p>
+                        <h4 className="price text-danger fw-bold">₦{numeral(val.price).format("0,0")}</h4>
+                        <a style={{fontSize:"10px"}} href={"/product/" + val.name + "?uuid=" + val._id} className="mt-2 mb-2 fw-semibold btn-danger btn">View Product</a>
+                    </div>
+                  </a>
+                )
+              })
+            }
           </div>
         </div>
 
