@@ -7,6 +7,7 @@ import { useCookies } from "react-cookie";
 export default function NavBar() {
     const [cookie, setCookie, removeCookie] = useCookies("");
     const [user, setUser] = useState(cookie.user ?? "");
+    const [logOuts, setlogout, removeLogout] = useCookies(["user"])
     const alertModal = () => {
         Swal.fire({
             title: "Are you sure?",
@@ -17,6 +18,29 @@ export default function NavBar() {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, Log Out!"
           }).then((result) => {
+        });
+    }
+
+    const logOut = (e) => {
+        e.preventDefault()
+        Swal.fire({
+            title: "Log Out?",
+            text: "Your account will be log out!!",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#2a3042",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, log out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+              removeLogout(["user"])
+              Swal.fire({
+                title: "Logged out!",
+                text: "Account is log out successfully.",
+                icon: "success"
+              });
+              window.location.href="/"
+            }
         });
     }
 
@@ -73,7 +97,7 @@ export default function NavBar() {
                             <div className="w-100">
                                 <ul className="navbar-nav">
                                     {user &&<li className="nav-item">
-                                        <Link className="nav-link" ><i className="fa-solid fa-power-off"></i> Log Out</Link>
+                                        <Link onClick={logOut} className="nav-link" ><i className="fa-solid fa-power-off"></i> Log Out</Link>
                                     </li>}
                                 </ul>
                             </div>
@@ -85,7 +109,7 @@ export default function NavBar() {
                     <li className="list-unstyled"><a href="/dashboard">Dashboard</a></li>
                     <li className="list-unstyled"><a href="/shop-perfumes">Shop</a></li>
                     {!user && <li className="list-unstyled"><a href="/signup" className='btn fw-bold'>Sign Up</a></li>}
-                    {user && <li className="list-unstyled"><a href="#" className='btn fw-bold'>Log Out</a></li>}
+                    {user && <li onClick={logOut} className="list-unstyled"><a href="#" className='btn fw-bold'>Log Out</a></li>}
                     
                     </ul>
                 </div>

@@ -6,6 +6,30 @@ import { useCookies } from 'react-cookie';
 export default function SideBar() {
     const [cookie, setCookie, removeCookie] = useCookies("");
     const [user, setUser] = useState(cookie.user ?? "");
+    const [logOuts, setlogout, removeLogout] = useCookies(["user"])
+
+    const logOut = (e) => {
+        e.preventDefault()
+        Swal.fire({
+            title: "Log Out?",
+            text: "Your account will be log out!!",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#2a3042",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, log out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+              removeLogout(["user"])
+              Swal.fire({
+                title: "Logged out!",
+                text: "Account is log out successfully.",
+                icon: "success"
+              });
+              window.location.href="/"
+            }
+        });
+    }
 
     return (
         <div className="offcanvas offcanvas-start show-sidebar">
@@ -45,7 +69,7 @@ export default function SideBar() {
             <div className="w-100">
                 <ul className="navbar-nav">
                 {user &&<li className="nav-item">
-                        <Link className="nav-link" ><i className="fa-solid fa-power-off"></i> Log Out</Link>
+                        <Link onClick={logOut} className="nav-link" ><i className="fa-solid fa-power-off"></i> Log Out</Link>
                     </li>}
                 </ul>
             </div>

@@ -98,7 +98,7 @@ export default function ProductListing() {
                 }
               </ul>
             </div>
-            <input type="text" onChange={e => setsearchVal(e.target.value)}  placeholder="search product by categories, year, price, brand etc"/>
+            <input type="text" onChange={e => setsearchVal(e.target.value)}  placeholder="search product by categories, name etc"/>
             <button onClick={searchProduct} className="search">Search</button>
           </div>
 
