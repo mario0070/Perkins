@@ -638,3 +638,107 @@
 .single .state.error::placeholder{
     color: red;
 }
+
+.carts{
+    padding: 2em 6em;
+    margin-bottom: 8em;
+}
+
+.carts .cartBox{
+    box-shadow: .1em .1em 1em rgba(0, 0, 0, 0.171);
+    width: 70%;
+    height: fit-content;
+    border-radius: 3px;
+    padding: 1em;
+    margin-right: 3em;
+}
+
+.cartBox .first{
+    width: 90%;
+}
+
+.cartBox .second{
+    width: fit-content;
+}
+
+.cartBox img{
+    width: 200px;
+    height: 170px;
+    margin-right: .5em;
+}
+
+.carts .total{
+    box-shadow: .1em .1em 1em rgba(0, 0, 0, 0.171);
+    width: 30%;
+    height: fit-content;
+    border-radius: 3px;
+    padding: 1em;
+}
+
+.carts .total h6, .carts .cartBox h6{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.163);
+    padding-bottom: .5em;
+    margin-bottom: 1em;
+}
+
+.carts .total button{
+    width: 100%;
+    margin-top: 2em;
+    border-radius: 3px;
+}
+
+.carts .contentcart{
+    border-bottom: 1px solid rgba(112, 112, 112, 0.163);
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+
+.smally{
+    font-size: 12px;
+    background-color: rgba(255, 0, 0, 0.038);
+}
+
+.smally1{
+    font-size: 12px;
+}
+
+@media screen and (max-width: 750px){
+    .carts .over{
+        flex-wrap: wrap;
+    }
+
+    .carts .cartBox{
+        margin-bottom: 3em;
+        width: 100%;
+        border-radius: 3px;
+        padding: 1em;
+        margin-right: 0em;
+    }
+
+    .carts .total{
+        width: 100%;
+    }
+
+    .carts{
+        padding: 2em 1em;
+    }
+
+    .contentcart{
+        flex-wrap: wrap;
+    }
+    
+    .cartBox img{
+        width: 150px;
+        height: 170px;
+        margin-right: .5em;
+        margin-bottom: 1em;
+    }
+
+    .cartBox .first{
+        width: 100%;
+    }
+
+    /* .cartBox .first .d-flex{
+        flex-wrap: wrap;
+    } */
+}

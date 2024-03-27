@@ -67,6 +67,7 @@ export default function Topbar({toggle, role}) {
           <div className="top">
           <div className="links">
               <p className=""><a href="/dashboard" className='side_link'><i class="fa-solid fa-house"></i> Dashboard</a></p>
+              <p className=""><a href="/carts" className='side_link'><i class="fa-solid fa-cart-shopping"></i> My Cart</a></p>
               {user.email == role &&  <p className=""><a className='side_link' href="/products"><i class="fa-brands fa-product-hunt"></i> Products</a></p>}
               <p className=""><a className='side_link' href="/analytic"><i class="fa-solid fa-chart-simple"></i> Analytic</a></p>
               {user.email != role && <p className=""><a className='side_link' href="/orders"><i class="fa-brands fa-first-order-alt"></i> Orders</a></p>}

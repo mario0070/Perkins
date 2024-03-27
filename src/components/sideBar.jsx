@@ -50,6 +50,9 @@ export default function SideBar() {
                         <a className="nav-link" href="/dashboard"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
                     </li>
                     <li className="nav-item mb-4">
+                        <a className="nav-link" href="/carts"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
+                    </li>
+                    <li className="nav-item mb-4">
                         <a className="nav-link" href="/shop-perfumes"><i class="fa-brands fa-product-hunt"></i> Shop Perfumes</a>
                     </li>
                     {!user && <li className="nav-item mb-4">

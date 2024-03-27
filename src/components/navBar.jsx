@@ -83,6 +83,10 @@ export default function NavBar() {
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/shop-perfumes"><i className="fa-solid fa-bars"></i> Shop Perfumes</Link>
                                     </li>
+                                    
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/cart"><i className="fa-solid fa-cart-shopping"></i> My Cart</Link>
+                                    </li>
                                     {!user &&<li className="nav-item">
                                         <Link className="nav-link" to="/login"><i className="fa-solid fa-bars"></i> Login</Link>
                                     </li>}
@@ -107,6 +111,7 @@ export default function NavBar() {
                     <ul className='d-flex'>
                     <li className="list-unstyled"><a href="/">Home</a></li>
                     <li className="list-unstyled"><a href="/dashboard">Dashboard</a></li>
+                    <li className="list-unstyled"><a href="/carts">My Cart</a></li>
                     <li className="list-unstyled"><a href="/shop-perfumes">Shop</a></li>
                     {!user && <li className="list-unstyled"><a href="/signup" className='btn fw-bold'>Sign Up</a></li>}
                     {user && <li onClick={logOut} className="list-unstyled"><a href="#" className='btn fw-bold'>Log Out</a></li>}

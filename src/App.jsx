@@ -11,6 +11,7 @@ import Dashboard from './hotelsng/pages/vendor_dashboard'
 import Profile from './hotelsng/pages/profile'
 import Analytic from './hotelsng/pages/analytic'
 import AllOrders from './hotelsng/pages/all_order'
+import Carts from './hotelsng/pages/carts'
 import AuthProvider from './utils/Context'
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
             <Route element={<Index/>} path='/'/>
             <Route element={<Signup/>} path='/signup'/>
             <Route element={<Login/>} path='/login'/>
-            <Route element={<Login/>} path='/login'/>
+            <Route element={<Carts/>} path='/carts'/>
             <Route element={<Profile/>} path='/profile'/>
             <Route element={<Products/>} path='/products'/>
             <Route element={<Analytic/>} path='/analytic'/>

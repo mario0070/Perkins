@@ -26,6 +26,7 @@ export default function Single() {
   const [isFill, setisFill] = useState(false)
   const [category, setcategory] = useState([])
   const [allproduct, setallproduct] = useState([])
+  const [storeCarts, setstoreCarts] = useState([]);
 
   const typeChange = () => {    
     var addy = document.querySelector(".addy")
@@ -44,6 +45,10 @@ export default function Single() {
 
 
   useEffect(() => {
+    console.log(cookie.carts)
+    const carts = cookie.carts || [];
+    setstoreCarts(carts);
+
     axios.post("/product/show", {
       id : queryParameters.get("uuid")
     })
@@ -75,7 +80,7 @@ export default function Single() {
         console.log(error)
     })
 
-  },[product])
+  },[])
 
   const alert = (icon, msg) => {
     const Toast = Swal.mixin({
@@ -94,22 +99,6 @@ export default function Single() {
         title: msg
       });
   }
-
-  const reqApi = () => {
-    alert("success","Thanks for doing business with us! Come back soon!!")
-    axios.post("/order/create", {
-      orderBy : user._id,
-      owner : product.owner._id,
-      product : product._id,
-    })
-    .then(res => {
-        alert("success", "Order created successfully😃")
-    })
-    .catch(error => {
-        console.log(error)
-        alert("error", "Something went error")
-    })
-  }  
 
   const mainOrder = () => {
     var orderbtn = document.querySelector(".orderbtn")
@@ -167,24 +156,12 @@ export default function Single() {
     }
   }
 
-  function payWithPaystack(e) {
-    e.preventDefault();
-
-    let handler = PaystackPop.setup({
-      key: 'pk_test_98e99f884464bd11201d04f1c2cebf94136083db',
-      email,
-      amount,
-      name,
-      ref: ''+Math.floor((Math.random() * 1000000000) + 1),
-      onClose: function(){
-        alert("warning", "Transaction not completed");
-      },
-      callback: function(response){
-        reqApi()
-      }
-    });
-
-    handler.openIframe();
+  function addToCart(e) {
+    const addcarts = [...storeCarts, product];
+    setstoreCarts(addcarts);
+    setCookie("carts", addcarts)
+    alert("success", "Product has been added to cart")
+    console.log(addcarts)
   }
 
 
@@ -208,15 +185,12 @@ export default function Single() {
                     <p className="mb-1 disc">₦{numeral(Number(product.price) + 800).format("0,0")}</p>
                     <p className="stock">in stock</p>
                     <p className="shipping">+ shipping from ₦550 to your location</p>
-                    {user && 
                       <>
-                        {!isFill && <button onClick={mainOrder} className='btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button>}
+                        {!isFill && <button onClick={mainOrder} className='btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
 
                         {/* {isFill && <PaystackButton className='btn orderbtn' {...componentProps} />} */}
-                        {isFill && <button onClick={payWithPaystack} className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button>}
+                        {isFill && <button onClick={addToCart} className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
                       </>
-                    }
-                    {!user && <a href="/login"><button className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Order Now</button></a>}
                     
                     <div className='btn qty mt-0 d-flex'>
                       <i className="btn fa-solid fa-minus" onClick={decrease}></i> 
