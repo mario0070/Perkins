@@ -35,7 +35,7 @@ export default function Carts() {
       .catch(error => {
           console.log(error)
       })
-    }, []);
+    }, [product]);
 
     const deleteCart = (id) => {
       Swal.fire({
@@ -86,18 +86,21 @@ export default function Carts() {
 
     const reqApi = () => {
       alert("success","Thanks for doing business with us! Come back soon!!")
-      axios.post("/order/create", {
-        orderBy : user._id,
-        owner : product.owner._id,
-        product : product._id,
-      })
-      .then(res => {
-          console.log(res)
-          alert("success", "Order created successfully😃")
-      })
-      .catch(error => {
-          console.log(error)
-          alert("error", "Something went error")
+      product.map(val => {
+        var test = JSON.parse(val.carts)
+        axios.post("/order/create", {
+          orderBy : user._id,
+          owner : test.owner._id,
+          product : test._id,
+        })
+        .then(res => {
+             console.log(res)
+            alert("success", "Order created successfully😃")
+        })
+        .catch(error => {
+            console.log(error)
+            alert("error", "Something went error")
+        })
       })
     }  
 
