@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie'
 export default function Profile() {
     const [cookie, setCookie, removeCookie] = useCookies("")
     const [user, setUser] = useState(cookie.user ?? "")
-    const [role, setRole] = useState("jamiu@gmail.com")
+    const [role, setRole] = useState("chima@gmail.com")
 
     const toggle = () => {
         const topbar = document.querySelector(".topbar")

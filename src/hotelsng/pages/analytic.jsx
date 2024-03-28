@@ -18,7 +18,7 @@ Chartjs.register(
 )
 
 export default function Analytics() {
-    const [role, setRole] = useState("jamiu@gmail.com")
+    const [role, setRole] = useState("chima@gmail.com")
     const [lineChart , setlineChart] = useState([])
     const [cookie, setCookie, removeCookie] = useCookies("")
     const [user, setUser] = useState(cookie.user ??  "")

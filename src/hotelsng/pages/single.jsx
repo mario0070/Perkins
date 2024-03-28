@@ -9,7 +9,7 @@ import NavBar from '../../components/navBar'
 
 export default function Single() {
   const [queryParameters] = useSearchParams()
-  const [role, setRole] = useState("jamiu@gmail.com");
+  const [role, setRole] = useState("chima@gmail.com");
   const [loaded, setLoaded] = useState(false)
   const [product, setproduct] = useState([])
   const [owner, setowner] = useState("")
