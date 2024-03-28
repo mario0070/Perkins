@@ -92,6 +92,7 @@ export default function Carts() {
         product : product._id,
       })
       .then(res => {
+          console.log(res)
           alert("success", "Order created successfully😃")
       })
       .catch(error => {
