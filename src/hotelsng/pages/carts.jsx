@@ -31,7 +31,8 @@ export default function Carts() {
         var allCarts = res.data.data
         allCarts.map(val => {
           var prices = JSON.parse(val.carts)
-          initial += Number(prices.price)
+          console.log(Number(prices.price) * Number(val.quantity))
+          initial += Number(prices.price) * Number(val.quantity)
           setinitialprice(initial)
         })
       })
@@ -172,7 +173,8 @@ export default function Carts() {
                             <div className="second">
                                 <h5 className="fw-bold text-nowrap text-danger">₦ {numeral(Number(prod.price)).format("0,0")}</h5>
                                 <h5 className="text-muted smally1 text-decoration-line-through">₦ {numeral(Number(prod.price) + 800).format("0,0")} </h5>
-                                <p className="">Qty: 1</p>
+                                <p className="">Qty: {val.quantity ?? 1}</p>
+                                <p className="text-nowrap">TOTAL: ₦ {numeral(Number(prod.price * val.quantity)).format("0,0")}</p>
                             </div>
                         </div>)
                         })

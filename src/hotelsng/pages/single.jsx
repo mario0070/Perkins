@@ -154,7 +154,8 @@ export default function Single() {
 
     axios.post("/product/carts", {
       data : product,
-      id: user._id ?? ""
+      id: user._id ?? "",
+      quantity
     })
     .then(res => {
       console.log(res)
