@@ -48,14 +48,18 @@ export default function Carts() {
       confirmButtonText: "Yes, remove it!",
       }).then((result) => {
       if (result.isConfirmed) {
-          // axios
-          // .post("/product/delete", {
-          //     id: id,
-          // })
-          // .then((res) => {})
-          // .catch((err) => {
-          //     console.log(err, id);
-          // });
+          axios
+          .post("/product/delete-carts", {
+              id: id,
+          })
+          .then((res) => {
+            console.log(res)
+            alert("success", "Cart has been remmoved")
+          })
+          .catch((err) => {
+            alert("error", "An error occur")
+              console.log(err);
+          });
 
           Swal.fire({
             title: "Removed!",
@@ -155,7 +159,7 @@ export default function Carts() {
                                         <p className="text-muted mb-1">Category: {prod.category}</p>
                                         <p className="text-muted mb-1">Capacity: {prod.capacity}ml</p>
                                         <p className="p-1 px-2 smally" style={{width:"fit-content"}}>in stock</p>
-                                        <p className="text-danger btn" onClick={deleteCart}><i className="fa-solid fa-trash"></i> Remove</p>
+                                        <p className="text-danger btn" onClick={() => deleteCart(val._id)}><i className="fa-solid fa-trash"></i> Remove</p>
                                     </div>
                                 </div>
                             </div>
