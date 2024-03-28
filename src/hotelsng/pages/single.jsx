@@ -72,7 +72,7 @@ export default function Single() {
     .catch(error => {
         console.log(error)
     })
-  },[])
+  },[product])
 
   const alert = (icon, msg) => {
     const Toast = Swal.mixin({
