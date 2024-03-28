@@ -139,7 +139,7 @@ export default function Single() {
 
     axios.post("/product/carts", {
       data : product,
-      id: "65e5fc940e6fbba813d2842a"
+      id: user._id ?? ""
     })
     .then(res => {
       console.log(res)
@@ -151,6 +151,13 @@ export default function Single() {
         submitBtn.innerHTML = `<i class="fa-solid fa-cart-shopping"></i> Add to Car`
         console.log(error)
     })
+  }
+
+  const redirectTOLogin = () => {
+    alert("infor", "Login to continue")
+    setTimeout(() => {
+      window.location.href = "/login"
+    },1500)
   }
 
 
@@ -174,12 +181,18 @@ export default function Single() {
                     <p className="mb-1 disc">₦{numeral(Number(product.price) + 800).format("0,0")}</p>
                     <p className="stock">in stock</p>
                     <p className="shipping">+ shipping from ₦550 to your location</p>
-                      <>
-                        {!isFill && <button onClick={mainOrder} className='btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
+                      {
+                        !cookie.user &&
+                        <button onClick={redirectTOLogin} className='btn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                      }
+                      { cookie.user &&
+                        <>
+                          {!isFill && <button onClick={mainOrder} className='btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
 
-                        {/* {isFill && <PaystackButton className='btn orderbtn' {...componentProps} />} */}
-                        {isFill && <button onClick={addToCart} className='paymentForm submitBtn btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
-                      </>
+                          {/* {isFill && <PaystackButton className='btn orderbtn' {...componentProps} />} */}
+                          {isFill && <button onClick={addToCart} className='paymentForm submitBtn btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
+                        </>
+                      }
                     
                     <div className='btn qty mt-0 d-flex'>
                       <i className="btn fa-solid fa-minus" onClick={decrease}></i> 

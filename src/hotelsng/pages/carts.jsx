@@ -18,10 +18,9 @@ export default function Carts() {
   const [initialprice, setinitialprice] = useState(0)
 
   if(cookie.user){
-
     useEffect(() => {
       axios.post("/product/getcarts",{
-        id: "65e5fc940e6fbba813d2842a",
+        id: user._id,
       })
       .then(res => {
         setproduct(res.data.data)
@@ -107,7 +106,7 @@ export default function Carts() {
       let handler = PaystackPop.setup({
         key: 'pk_test_98e99f884464bd11201d04f1c2cebf94136083db',
         email,
-        initialprice,
+        amount: initialprice * 100,
         name,
         ref: ''+Math.floor((Math.random() * 1000000000) + 1),
         onClose: function(){
@@ -130,6 +129,15 @@ export default function Carts() {
 
                   <div className="cartBox">
                       <h6 className="fw-bold">CART ({product.length})</h6>
+                      {
+                        product.length == 0 &&
+                        <>
+                          <div className="text-center pt-5 pb-5">
+                            <h4>You don't have any cart product!!</h4>
+                            <a href="/shop-perfumes" className="btn text-white px-4 py-2 mt-2" style={{backgroundColor: "red"}}>Find product to order</a>
+                          </div>
+                        </>
+                      }
                       {
                         product.reverse().map(val => {
                           var prod = JSON.parse(val.carts)
