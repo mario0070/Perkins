@@ -87,11 +87,12 @@ export default function Carts() {
     const reqApi = () => {
       alert("success","Thanks for doing business with us! Come back soon!!")
       product.map(val => {
-        var test = JSON.parse(val.carts)
+        var order_prod = JSON.parse(val.carts)
         axios.post("/order/create", {
           orderBy : user._id,
-          owner : test.owner._id,
-          product : test._id,
+          owner : order_prod.owner._id,
+          product : order_prod._id,
+          cart_id: val._id 
         })
         .then(res => {
              console.log(res)
