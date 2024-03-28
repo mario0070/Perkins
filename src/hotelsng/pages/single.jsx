@@ -19,9 +19,6 @@ export default function Single() {
   const address = useRef("")
   const userphone = useRef("")
   const state = useRef("")
-  const [email, setEmail] = useState(user.email)
-  const [name, setName] = useState(user.name)
-  const [phone, setPhone] = useState(user.phone)
   const [amount, setprice] = useState(0)
   const [isFill, setisFill] = useState(false)
   const [category, setcategory] = useState([])
@@ -53,6 +50,24 @@ export default function Single() {
         setLoaded(true)
         setproduct(res.data.data[0])
         setowner(res.data.data[0].owner)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+    axios.post("/product/category", {
+      category: product.category
+    })
+    .then(res => {
+      setcategory(res.data.data)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+    axios.get("/product")
+    .then(res => {
+      setallproduct(res.data.data)
     })
     .catch(error => {
         console.log(error)

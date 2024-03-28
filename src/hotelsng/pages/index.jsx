@@ -41,7 +41,6 @@ export default function Index() {
               <div className="text-lay text-white">
                 <h3 className="text-start mt-4 mb-3">Black Opium Eau De</h3>
                 <p className="text-start">Availability: In Stock</p>
-                <p className="text-start">Brand: Sunglass</p>
                 <p className="text-start">Capacity: 200ml, 250ml</p>
                 <h2 className="text-start fw-bold">₦40,000</h2>
                 
@@ -63,7 +62,6 @@ export default function Index() {
               <div className="text-lay">
                 <h3 className="text-start mt-4 mb-3">Chanel N°5 Eau De</h3>
                 <p className="text-start">Availability: In Stock</p>
-                <p className="text-start">Brand: Bag</p>
                 <p className="text-start">Capacity: 150ml, 200ml</p>
                 <h2 className="text-start fw-bold">₦23,000</h2>
                 
@@ -86,7 +84,6 @@ export default function Index() {
                 <div className="mx-auto">
                     <h3 className="text-start mt-4 mb-3">Angel Natural Refillable</h3>
                     <p className="text-start">Availability: In Stock</p>
-                    <p className="text-start">Brand: Sunglass</p>
                     <p className="text-start">Capacity: 200ml, 250ml</p>
                     <h2 className="text-start fw-bold">₦80,000</h2>
                     
