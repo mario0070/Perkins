@@ -19,6 +19,9 @@ export default function Carts() {
 
   if(cookie.user){
     useEffect(() => {
+      if(product.length == 0){
+        setinitialprice(0)
+      }
       axios.post("/product/getcarts",{
         id: user._id,
       })
@@ -53,7 +56,6 @@ export default function Carts() {
               id: id,
           })
           .then((res) => {
-            console.log(res)
             alert("success", "Cart has been remmoved")
           })
           .catch((err) => {
@@ -110,6 +112,10 @@ export default function Carts() {
     }  
 
     function payWithPaystack(e) {
+      if(initialprice <= 0){
+        alert("error", "Your Product Cart is Empty")
+        return;
+      }
       e.preventDefault();
 
       let handler = PaystackPop.setup({
