@@ -45,10 +45,6 @@ export default function Single() {
 
 
   useEffect(() => {
-    console.log(cookie.carts)
-    const carts = cookie.carts || [];
-    setstoreCarts(carts);
-
     axios.post("/product/show", {
       id : queryParameters.get("uuid")
     })
@@ -61,25 +57,6 @@ export default function Single() {
     .catch(error => {
         console.log(error)
     })
-
-    axios.post("/product/category", {
-      category : product.category
-    })
-    .then(res => {
-      setcategory(res.data.data)
-    })
-    .catch(error => {
-        console.log(error)
-    })
-
-    axios.get("/product")
-    .then(res => {
-      setallproduct(res.data.data)
-    })
-    .catch(error => {
-        console.log(error)
-    })
-
   },[])
 
   const alert = (icon, msg) => {
@@ -156,12 +133,24 @@ export default function Single() {
     }
   }
 
-  function addToCart(e) {
-    const addcarts = [...storeCarts, product];
-    setstoreCarts(addcarts);
-    setCookie("carts", addcarts)
-    alert("success", "Product has been added to cart")
-    console.log(addcarts)
+  function addToCart() {
+    var submitBtn = document.querySelector(".submitBtn")
+    submitBtn.innerHTML = `Processing <div class="spinner-border spinner-border-sm text-white"> </div>`
+
+    axios.post("/product/carts", {
+      data : product,
+      id: "65e5fc940e6fbba813d2842a"
+    })
+    .then(res => {
+      console.log(res)
+      submitBtn.innerHTML = `<i class="fa-solid fa-cart-shopping"></i> Add to Car`
+      alert("success", "Product has been added to cart")
+    })
+    .catch(error => {
+        alert("error", "An error occur")
+        submitBtn.innerHTML = `<i class="fa-solid fa-cart-shopping"></i> Add to Car`
+        console.log(error)
+    })
   }
 
 
@@ -189,7 +178,7 @@ export default function Single() {
                         {!isFill && <button onClick={mainOrder} className='btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
 
                         {/* {isFill && <PaystackButton className='btn orderbtn' {...componentProps} />} */}
-                        {isFill && <button onClick={addToCart} className='paymentForm btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
+                        {isFill && <button onClick={addToCart} className='paymentForm submitBtn btn orderbtn'><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>}
                       </>
                     
                     <div className='btn qty mt-0 d-flex'>
